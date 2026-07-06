@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+:root {
+  --color-bg: #faf6ee;
+  --color-ink: #141210;
+  --color-ink-purple: #241a33;
+  --color-body: #4a453d;
+  --color-body-alt: #3f3a32;
+  --color-muted: #7a7264;
+  --color-faint: #a99f8c;
+  --color-orange: #ff6a3d;
+  --color-orange-light: #ff8a5c;
+  --color-purple: #5e2fb0;
+  --color-purple-bright: #7c3acd;
+  --color-purple-deep: #5324a3;
+  --color-hairline: #ece3d0;
+  --color-hairline-alt: #e6ddca;
+  --color-card: #fffdf7;
+
+  --ease-bh: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --font-grotesk: var(--font-space-grotesk);
+  --font-serif-accent: var(--font-instrument-serif);
+  --font-mono-bh: var(--font-space-mono);
+}
+
+@theme inline {
+  --color-bh-bg: var(--color-bg);
+  --color-bh-ink: var(--color-ink);
+  --color-bh-ink-purple: var(--color-ink-purple);
+  --color-bh-body: var(--color-body);
+  --color-bh-body-alt: var(--color-body-alt);
+  --color-bh-muted: var(--color-muted);
+  --color-bh-faint: var(--color-faint);
+  --color-bh-orange: var(--color-orange);
+  --color-bh-orange-light: var(--color-orange-light);
+  --color-bh-purple: var(--color-purple);
+  --color-bh-purple-bright: var(--color-purple-bright);
+  --color-bh-purple-deep: var(--color-purple-deep);
+  --color-bh-hairline: var(--color-hairline);
+  --color-bh-hairline-alt: var(--color-hairline-alt);
+  --color-bh-card: var(--color-card);
+  --ease-bh: var(--ease-bh);
+
+  --font-grotesk: var(--font-space-grotesk);
+  --font-serif-accent: var(--font-instrument-serif);
+  --font-mono-bh: var(--font-space-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+}
+
+::selection {
+  background: rgba(255, 106, 61, 0.22);
+  color: #141210;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #7c3acd;
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+@keyframes bh-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes bh-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bh-bloom {
+  0% {
+    transform: scale(0.55);
+    opacity: 0.85;
+  }
+  70% {
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+
+@keyframes bh-sig {
+  0%,
+  100% {
+    opacity: 0.32;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
+@keyframes bh-travel-y {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
