@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { externalLinkProps } from "@/lib/links";
 
 type CTAButtonProps = {
   href: string;
@@ -17,6 +18,7 @@ export default function CTAButton({ href, label, size = "lg", className = "" }: 
   return (
     <Link
       href={href}
+      {...externalLinkProps(href)}
       className={`group ease-bh inline-flex items-center rounded-full bg-bh-orange font-grotesk font-bold text-white no-underline shadow-[0_20px_38px_-14px_rgba(255,106,61,.75)] transition-[transform,box-shadow] duration-[220ms] hover:-translate-y-[3px] hover:shadow-[0_28px_48px_-14px_rgba(255,106,61,.85)] active:translate-y-[-1px] active:scale-[.985] ${sizes[size]} ${className}`}
     >
       {label}

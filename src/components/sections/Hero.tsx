@@ -7,6 +7,7 @@ import AccentText from "@/components/ui/AccentText";
 import CTAButton from "@/components/ui/CTAButton";
 import Eyebrow from "@/components/ui/Eyebrow";
 import { hero } from "@/content/home";
+import { externalLinkProps } from "@/lib/links";
 
 const accentBorderHover: Record<"orange" | "purple", string> = {
   orange: "hover:border-bh-orange/60 hover:shadow-[0_12px_24px_-14px_rgba(255,106,61,.6)]",
@@ -88,6 +89,7 @@ export default function Hero() {
             <Link
               key={link.href}
               href={link.href}
+              {...externalLinkProps(link.href)}
               className={`ease-bh inline-flex items-center gap-2 rounded-full border-[1.5px] border-[#e2dccf] bg-bh-card/60 px-[18px] py-[9px] font-grotesk text-base font-semibold text-bh-ink no-underline transition-[transform,border-color,box-shadow,background-color] duration-[220ms] hover:-translate-y-0.5 ${accentBorderHover[link.accent]}`}
             >
               {link.label} <span className={`font-mono-bh text-xs ${accentArrowColor[link.accent]}`}>↗</span>

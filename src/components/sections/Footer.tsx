@@ -2,6 +2,7 @@ import Link from "next/link";
 import Wordmark from "@/components/ui/Wordmark";
 import MonoTagline from "@/components/ui/MonoTagline";
 import { brand, footerNav, footer } from "@/content/site";
+import { externalLinkProps } from "@/lib/links";
 
 export default function Footer() {
   return (
@@ -54,6 +55,7 @@ function FooterColumn({
         <Link
           key={link.label}
           href={link.href}
+          {...externalLinkProps(link.href)}
           className={`font-grotesk text-[15px] font-semibold text-[#2a2620] no-underline transition-colors duration-200 ${hoverClass}`}
         >
           {link.label}

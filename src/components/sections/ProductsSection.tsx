@@ -8,9 +8,9 @@ import { productsSection, type ProductId } from "@/content/home";
 import type { ReactNode } from "react";
 
 const marks: Record<ProductId, ReactNode> = {
+  mnsomalis: <MarkMNServices />,
   mnmuslim: <MarkMNMuslim />,
   mnhalal: <MarkMNHalal />,
-  "mnmuslim-services": <MarkMNServices />,
 };
 
 export default function ProductsSection() {

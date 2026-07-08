@@ -2,7 +2,7 @@ import AccentText from "@/components/ui/AccentText";
 import Reveal from "@/components/ui/Reveal";
 import Eyebrow from "@/components/ui/Eyebrow";
 import ChannelCard from "@/components/building/ChannelCard";
-import { IconYouTube, IconGitHub, IconX, IconNewsletter } from "@/components/icons/ChannelIcons";
+import { IconYouTube, IconGitHub, IconX } from "@/components/icons/ChannelIcons";
 import { buildingInPublic } from "@/content/home";
 import type { ReactNode } from "react";
 
@@ -10,7 +10,6 @@ const icons: Record<(typeof buildingInPublic.channels)[number]["id"], ReactNode>
   youtube: <IconYouTube />,
   github: <IconGitHub />,
   x: <IconX />,
-  newsletter: <IconNewsletter />,
 };
 
 export default function BuildingInPublicSection() {
@@ -36,19 +35,23 @@ export default function BuildingInPublicSection() {
         </Reveal>
 
         <Reveal delay={120} className="grid grid-cols-2 gap-3.5 max-[860px]:grid-cols-1">
-          {buildingInPublic.channels.map((channel) => (
-            <ChannelCard
-              key={channel.id}
-              href={channel.href}
-              icon={icons[channel.id]}
-              name={channel.name}
-              description={channel.description}
-              actionLabel={channel.actionLabel}
-              arrow={channel.arrow}
-              accent={channel.accent}
-              tinted={channel.tinted}
-            />
-          ))}
+          {buildingInPublic.channels.map((channel, i) => {
+            const isDanglingLast =
+              i === buildingInPublic.channels.length - 1 && buildingInPublic.channels.length % 2 !== 0;
+            return (
+              <ChannelCard
+                key={channel.id}
+                href={channel.href}
+                icon={icons[channel.id]}
+                name={channel.name}
+                description={channel.description}
+                actionLabel={channel.actionLabel}
+                arrow={channel.arrow}
+                accent={channel.accent}
+                className={isDanglingLast ? "col-span-2 max-[860px]:col-span-1" : undefined}
+              />
+            );
+          })}
         </Reveal>
       </div>
     </section>

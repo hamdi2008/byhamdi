@@ -2,7 +2,9 @@
 // Mirrors content/homepage-content.md in the design handoff. Edit copy here;
 // do not hardcode strings in components.
 
-import { taglineWords } from "./site";
+import { taglineWords, products, socials } from "./site";
+
+const bookingLink = "https://calendly.com/hamdi2008/ai-mvp-strategy-session";
 
 export const hero = {
   headline: {
@@ -11,22 +13,18 @@ export const hero = {
     after: " AI-powered products.",
   },
   supporting: taglineWords,
-  primaryCta: { label: "Book an AI MVP Strategy Session", href: "#book" },
+  primaryCta: { label: "Book an AI MVP Strategy Session", href: bookingLink },
   recentlyShipped: {
     eyebrow: "Recently shipped",
     links: [
-      { label: "MNMuslim", href: "#mnmuslim", accent: "orange" as const },
-      { label: "MNHalal", href: "#mnhalal", accent: "purple" as const },
-      {
-        label: "MNMuslim Services",
-        href: "#mnmuslim-services",
-        accent: "orange" as const,
-      },
+      { label: products[0].label, href: products[0].href, accent: "orange" as const },
+      { label: products[1].label, href: products[1].href, accent: "purple" as const },
+      { label: products[2].label, href: products[2].href, accent: "orange" as const },
     ],
   },
 };
 
-export type ProductId = "mnmuslim" | "mnhalal" | "mnmuslim-services";
+export type ProductId = "mnsomalis" | "mnmuslim" | "mnhalal";
 
 export const productsSection = {
   eyebrow: null,
@@ -34,16 +32,27 @@ export const productsSection = {
   supporting: "Building useful AI-powered products.",
   items: [
     {
+      id: "mnsomalis" as ProductId,
+      plainName: "MN Somali",
+      name: { before: "MN Somali", accent: "", after: "" },
+      description:
+        "Discover data, context, and sourced information about Minnesota’s Somali community.",
+      href: "https://www.mnsomalis.com/",
+      accent: "purple" as const,
+      medallionTint: "purple" as const,
+      side: "left" as const,
+      flagship: false,
+    },
+    {
       id: "mnmuslim" as ProductId,
       plainName: "MNMuslim",
       name: { before: "MNMuslim", accent: "", after: "" },
       description:
         "Discover Muslim services, halal food, businesses, and community resources.",
-      // TODO: replace with the real MNMuslim URL before launch.
-      href: "#",
+      href: "https://www.mnmuslim.com/",
       accent: "orange" as const,
       medallionTint: "purple" as const,
-      side: "left" as const,
+      side: "right" as const,
       flagship: true,
     },
     {
@@ -52,23 +61,9 @@ export const productsSection = {
       name: { before: "MNHalal", accent: "", after: "" },
       description:
         "Discover halal restaurants, cafés, bakeries, and markets across Minnesota.",
-      // TODO: replace with the real MNHalal URL before launch.
-      href: "#",
+      href: "https://www.mnhalal.com/",
       accent: "orange" as const,
       medallionTint: "orange" as const,
-      side: "right" as const,
-      flagship: false,
-    },
-    {
-      id: "mnmuslim-services" as ProductId,
-      plainName: "MNMuslim Services",
-      name: { before: "MNMuslim ", accent: "Services", after: "" },
-      description:
-        "Find trusted Muslim professionals and local services across Minnesota.",
-      // TODO: replace with the real MNMuslim Services URL before launch.
-      href: "#",
-      accent: "purple" as const,
-      medallionTint: "purple" as const,
       side: "left" as const,
       flagship: false,
     },
@@ -86,7 +81,7 @@ export const strategySession = {
     { text: "Recommended AI tools for your project", accent: "orange" as const },
     { text: "Clear next steps", accent: "purple" as const },
   ],
-  cta: { label: "Book an AI MVP Strategy Session", href: "#contact" },
+  cta: { label: "Book an AI MVP Strategy Session", href: bookingLink },
 };
 
 export const about = {
@@ -110,10 +105,8 @@ export const buildingInPublic = {
       description: "Build sessions and product breakdowns.",
       actionLabel: "Subscribe",
       arrow: "↗",
-      // TODO: wire real YouTube URL before launch.
-      href: "#",
+      href: socials.youtube,
       accent: "orange" as const,
-      tinted: false,
     },
     {
       id: "github" as const,
@@ -121,10 +114,8 @@ export const buildingInPublic = {
       description: "Open code, experiments, works in progress.",
       actionLabel: "Follow",
       arrow: "↗",
-      // TODO: wire real GitHub URL before launch.
-      href: "#",
+      href: socials.github,
       accent: "purple" as const,
-      tinted: false,
     },
     {
       id: "x" as const,
@@ -132,21 +123,8 @@ export const buildingInPublic = {
       description: "Daily notes from the build.",
       actionLabel: "Follow",
       arrow: "↗",
-      // TODO: wire real X handle before launch.
-      href: "#",
+      href: socials.x,
       accent: "orange" as const,
-      tinted: false,
-    },
-    {
-      id: "newsletter" as const,
-      name: "Newsletter",
-      description: "The occasional deep dive, in your inbox.",
-      actionLabel: "Join",
-      arrow: "→",
-      // TODO: wire real newsletter signup endpoint before launch.
-      href: "#",
-      accent: "purple" as const,
-      tinted: true,
     },
   ],
 };

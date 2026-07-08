@@ -16,22 +16,25 @@ export const taglineWords = [
 ];
 
 export const contact = {
-  // TODO: confirm real contact email before launch (see README launch gaps).
-  email: "hello@byhamdi.com",
+  email: "hamdi2008@gmail.com",
   ctaLabel: "Contact",
 };
 
 export const nav = {
-  contact: { label: "Contact", href: "#contact" },
+  contact: { label: "Contact", href: `mailto:${contact.email}` },
 };
 
 export const socials = {
-  // TODO: wire real URLs/handles before launch (see README launch gaps).
-  youtube: "#",
-  github: "#",
-  x: "#",
-  newsletter: "#",
+  youtube: "https://www.youtube.com/@hamdimohamud08",
+  github: "https://github.com/hamdi2008",
+  x: "https://x.com/hamdimahmuud",
 };
+
+export const products = [
+  { label: "MN Somali", href: "https://www.mnsomalis.com/" },
+  { label: "MNMuslim", href: "https://www.mnmuslim.com/" },
+  { label: "MNHalal", href: "https://www.mnhalal.com/" },
+];
 
 export const footerNav = {
   explore: [
@@ -40,15 +43,11 @@ export const footerNav = {
     { label: "About", href: "#about" },
     { label: "Building in public", href: "#building" },
   ],
-  products: [
-    { label: "MNMuslim", href: "#" },
-    { label: "MNHalal", href: "#" },
-    { label: "MNMuslim Services", href: "#" },
-  ],
+  products,
   connect: [
-    { label: "X / Twitter", href: socials.x },
+    { label: "X", href: socials.x },
     { label: "GitHub", href: socials.github },
-    { label: "Email", href: `mailto:${contact.email}` },
+    { label: "Contact", href: `mailto:${contact.email}` },
   ],
 };
 

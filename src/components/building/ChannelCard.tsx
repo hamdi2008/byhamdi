@@ -26,7 +26,7 @@ export default function ChannelCard({
   actionLabel,
   arrow,
   accent,
-  tinted = false,
+  className = "",
 }: {
   href: string;
   icon: ReactNode;
@@ -35,16 +35,14 @@ export default function ChannelCard({
   actionLabel: string;
   arrow: string;
   accent: Accent;
-  tinted?: boolean;
+  className?: string;
 }) {
   return (
     <Link
       href={href}
-      className={`ease-bh group flex flex-col gap-4 rounded-[22px] border p-[26px] text-bh-ink-purple no-underline transition-[transform,border-color,box-shadow,background-color] duration-[240ms] hover:-translate-y-[3px] hover:bg-white ${hoverBorder[accent]} ${
-        tinted
-          ? "border-bh-purple/28 bg-[linear-gradient(150deg,rgba(94,47,176,.06),rgba(255,253,247,.55))]"
-          : "border-bh-hairline bg-bh-card/55"
-      }`}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`ease-bh group flex flex-col gap-4 rounded-[22px] border border-bh-hairline bg-bh-card/55 p-[26px] text-bh-ink-purple no-underline transition-[transform,border-color,box-shadow,background-color] duration-[240ms] hover:-translate-y-[3px] hover:bg-white ${hoverBorder[accent]} ${className}`}
     >
       <span className={`flex h-12 w-12 flex-none items-center justify-center rounded-[14px] ${iconChipBg[accent]}`}>
         {icon}

@@ -27,15 +27,6 @@ export function IconX() {
   );
 }
 
-export function IconNewsletter() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5e2fb0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="3.5" y="6" width="17" height="12" rx="2.6" />
-      <path d="M4.2 7.5l7.8 5.4 7.8-5.4" />
-    </svg>
-  );
-}
-
 export function IconCheck() {
   return (
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round">
