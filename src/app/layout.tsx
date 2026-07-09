@@ -4,7 +4,7 @@ import ConstellationField from "@/components/field/ConstellationField";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import "./globals.css";
 
-const siteUrl = "https://byhamdi.co";
+const siteUrl = "https://www.byhamdi.co";
 const title = "By Hamdi — Building useful AI-powered products.";
 const description =
   "By Hamdi is a one-person studio building useful AI-powered products in Minnesota. Build. Learn. Share.";
