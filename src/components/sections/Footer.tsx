@@ -6,7 +6,7 @@ import { externalLinkProps } from "@/lib/links";
 
 export default function Footer() {
   return (
-    <footer id="contact" className="relative z-[1] overflow-hidden px-[52px] pt-16 pb-10 font-grotesk text-bh-ink">
+    <footer id="contact" className="relative z-[1] overflow-hidden px-6 pt-16 pb-10 font-grotesk text-bh-ink sm:px-[52px]">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(to_bottom,rgba(250,246,238,.5),rgba(250,246,238,.82)_60%,#f4eee2)]"

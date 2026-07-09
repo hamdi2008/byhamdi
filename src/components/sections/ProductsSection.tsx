@@ -17,7 +17,7 @@ export default function ProductsSection() {
   return (
     <section
       id="bh-products"
-      className="relative z-[1] overflow-hidden bg-transparent px-[52px] pt-[88px] pb-24 font-grotesk text-bh-ink"
+      className="relative z-[1] overflow-hidden bg-transparent px-6 pt-[88px] pb-24 font-grotesk text-bh-ink sm:px-[52px]"
     >
       <div
         aria-hidden="true"

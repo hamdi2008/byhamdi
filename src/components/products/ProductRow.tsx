@@ -29,8 +29,16 @@ const medallionShadow: Record<Accent, string> = {
 };
 
 const contentAlign: Record<"left" | "right", string> = {
-  left: "col-start-1 max-[760px]:col-start-2 justify-self-end max-[760px]:justify-self-start items-end max-[760px]:items-start text-right max-[760px]:text-left",
-  right: "col-start-3 max-[760px]:col-start-2 justify-self-start items-start text-left",
+  left: "col-start-1 max-[760px]:col-start-2 justify-self-end max-[760px]:justify-self-stretch items-end max-[760px]:items-stretch text-right max-[760px]:text-left",
+  right: "col-start-3 max-[760px]:col-start-2 justify-self-start max-[760px]:justify-self-stretch items-start max-[760px]:items-stretch text-left",
+};
+
+// h3/p stretch to the column width so long product names wrap instead of
+// overflowing (see contentAlign above), but the "Visit" link should stay
+// sized to its own content — otherwise its underline stretches full-width.
+const visitAlign: Record<"left" | "right", string> = {
+  left: "self-end max-[760px]:self-start",
+  right: "self-start",
 };
 
 export default function ProductRow({
@@ -70,8 +78,8 @@ export default function ProductRow({
       <h3
         className={
           flagship
-            ? "m-0 text-[clamp(40px,4.8vw,66px)] leading-[.98] font-bold tracking-[-.04em]"
-            : "m-0 text-[clamp(38px,4.2vw,58px)] leading-none font-bold tracking-[-.04em]"
+            ? "m-0 text-[clamp(40px,4.8vw,66px)] leading-[.98] font-bold tracking-[-.04em] break-words"
+            : "m-0 text-[clamp(38px,4.2vw,58px)] leading-none font-bold tracking-[-.04em] break-words"
         }
       >
         <AccentText before={name.before} accent={name.accent} after={name.after} color="purple" />
@@ -79,7 +87,13 @@ export default function ProductRow({
       <p className="mt-4 max-w-[34ch] text-[clamp(16px,1.4vw,20px)] leading-[1.5] font-medium text-bh-body">
         {description}
       </p>
-      <VisitLink href={href} label="Visit" ariaLabel={`Visit ${plainName}`} accent={accent} />
+      <VisitLink
+        href={href}
+        label="Visit"
+        ariaLabel={`Visit ${plainName}`}
+        accent={accent}
+        className={visitAlign[side]}
+      />
     </div>
   );
 
@@ -112,7 +126,7 @@ export default function ProductRow({
         ref={rowRef}
         onMouseMove={onMouseMove}
         onMouseLeave={onMouseLeave}
-        className="relative grid scroll-mt-[90px] grid-cols-[1fr_auto_1fr] items-center gap-x-[clamp(22px,3.4vw,56px)] max-[760px]:grid-cols-[auto_1fr] max-[760px]:gap-x-[22px]"
+        className="relative grid scroll-mt-[90px] grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-x-[clamp(22px,3.4vw,56px)] max-[760px]:grid-cols-[auto_minmax(0,1fr)] max-[760px]:gap-x-[22px]"
       >
         {side === "left" ? (
           <>

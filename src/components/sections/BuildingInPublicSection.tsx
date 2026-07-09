@@ -16,7 +16,7 @@ export default function BuildingInPublicSection() {
   return (
     <section
       id="building"
-      className="relative z-[1] overflow-hidden px-[52px] pt-[70px] pb-[90px] font-grotesk text-bh-ink"
+      className="relative z-[1] overflow-hidden px-6 pt-[70px] pb-[90px] font-grotesk text-bh-ink sm:px-[52px]"
     >
       <div
         aria-hidden="true"

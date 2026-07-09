@@ -18,11 +18,13 @@ export default function VisitLink({
   label,
   ariaLabel,
   accent,
+  className = "",
 }: {
   href: string;
   label: string;
   ariaLabel: string;
   accent: Accent;
+  className?: string;
 }) {
   return (
     <Link
@@ -30,7 +32,7 @@ export default function VisitLink({
       aria-label={ariaLabel}
       target="_blank"
       rel="noopener noreferrer"
-      className={`group mt-[22px] inline-flex items-center gap-2.5 border-b-2 border-bh-ink/[.14] pb-1 font-grotesk text-base font-semibold text-bh-ink no-underline transition-colors duration-300 ${borderHover[accent]}`}
+      className={`group mt-[22px] inline-flex w-fit items-center gap-2.5 border-b-2 border-bh-ink/[.14] pb-1 font-grotesk text-base font-semibold text-bh-ink no-underline transition-colors duration-300 ${borderHover[accent]} ${className}`}
     >
       {label}
       <span

@@ -7,7 +7,7 @@ import { about } from "@/content/home";
 
 export default function AboutSection() {
   return (
-    <section id="about" className="relative z-[1] overflow-hidden px-[52px] pt-[70px] pb-21 font-grotesk text-bh-ink">
+    <section id="about" className="relative z-[1] overflow-hidden px-6 pt-[70px] pb-21 font-grotesk text-bh-ink sm:px-[52px]">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(to_bottom,rgba(250,246,238,.6),rgba(250,246,238,.32)_40%,rgba(250,246,238,.32)_62%,rgba(250,246,238,.6))]"

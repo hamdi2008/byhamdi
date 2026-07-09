@@ -20,7 +20,7 @@ export default function StrategySessionSection() {
   return (
     <section
       id="book"
-      className="relative z-[1] overflow-hidden px-[52px] pt-[70px] pb-21 font-grotesk text-bh-ink"
+      className="relative z-[1] overflow-hidden px-6 pt-[70px] pb-21 font-grotesk text-bh-ink sm:px-[52px]"
     >
       <div
         aria-hidden="true"
