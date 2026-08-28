@@ -16,21 +16,33 @@ export const hero = {
   primaryCta: { label: "Book an AI MVP Strategy Session", href: bookingLink },
   recentlyShipped: {
     eyebrow: "Recently shipped",
-    links: [
-      { label: products[0].label, href: products[0].href, accent: "orange" as const },
-      { label: products[1].label, href: products[1].href, accent: "purple" as const },
-      { label: products[2].label, href: products[2].href, accent: "orange" as const },
-    ],
+    links: products.map((p, i) => ({
+      label: p.label,
+      href: p.href,
+      accent: (i % 2 === 0 ? "orange" : "purple") as "orange" | "purple",
+    })),
   },
 };
 
-export type ProductId = "mnsomalis" | "mnmuslim" | "mnhalal";
+export type ProductId = "lifeinviews" | "mnsomalis" | "mnmuslim" | "mnhalal";
 
 export const productsSection = {
   eyebrow: null,
   heading: { before: "Products I've ", accent: "Built", after: "" },
   supporting: "Building useful AI-powered products.",
   items: [
+    {
+      id: "lifeinviews" as ProductId,
+      plainName: "Life in Views",
+      name: { before: "Life in Views", accent: "", after: "" },
+      description:
+        "A personal operating system for organizing your priorities, tracking what matters, and reflecting on your progress.",
+      href: "https://lifeinviews.com",
+      accent: "purple" as const,
+      medallionTint: "purple" as const,
+      side: "left" as const,
+      flagship: false,
+    },
     {
       id: "mnsomalis" as ProductId,
       plainName: "MN Somali",
@@ -40,7 +52,7 @@ export const productsSection = {
       href: "https://www.mnsomalis.com/",
       accent: "purple" as const,
       medallionTint: "purple" as const,
-      side: "left" as const,
+      side: "right" as const,
       flagship: false,
     },
     {
@@ -52,7 +64,7 @@ export const productsSection = {
       href: "https://www.mnmuslim.com/",
       accent: "orange" as const,
       medallionTint: "purple" as const,
-      side: "right" as const,
+      side: "left" as const,
       flagship: true,
     },
     {
@@ -64,7 +76,7 @@ export const productsSection = {
       href: "https://www.mnhalal.com/",
       accent: "orange" as const,
       medallionTint: "orange" as const,
-      side: "left" as const,
+      side: "right" as const,
       flagship: false,
     },
   ],

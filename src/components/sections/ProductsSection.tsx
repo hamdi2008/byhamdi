@@ -4,10 +4,12 @@ import VerticalThread from "@/components/products/VerticalThread";
 import MarkMNMuslim from "@/components/products/MarkMNMuslim";
 import MarkMNHalal from "@/components/products/MarkMNHalal";
 import MarkMNServices from "@/components/products/MarkMNServices";
+import MarkLifeInViews from "@/components/products/MarkLifeInViews";
 import { productsSection, type ProductId } from "@/content/home";
 import type { ReactNode } from "react";
 
 const marks: Record<ProductId, ReactNode> = {
+  lifeinviews: <MarkLifeInViews />,
   mnsomalis: <MarkMNServices />,
   mnmuslim: <MarkMNMuslim />,
   mnhalal: <MarkMNHalal />,

@@ -31,6 +31,7 @@ export const socials = {
 };
 
 export const products = [
+  { label: "Life in Views", href: "https://lifeinviews.com" },
   { label: "MN Somali", href: "https://www.mnsomalis.com/" },
   { label: "MNMuslim", href: "https://www.mnmuslim.com/" },
   { label: "MNHalal", href: "https://www.mnhalal.com/" },
