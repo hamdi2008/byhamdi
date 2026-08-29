@@ -13,10 +13,7 @@ export const hero = {
     after: " AI-powered products.",
   },
   supporting: taglineWords,
-  // Scrolls to the Vibe Coding Help section (#book below) rather than
-  // linking straight to the request form — visitors should understand the
-  // service before being asked to submit a project.
-  primaryCta: { label: "Get Vibe Coding Help", href: "#book" },
+  primaryCta: { label: "Get Vibe Coding Help", href: googleFormLink },
   recentlyShipped: {
     eyebrow: "Recently shipped",
     links: products.map((p, i) => ({
