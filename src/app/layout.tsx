@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   description,
   keywords: [
     "By Hamdi",
-    "AI MVP strategy session",
+    "Vibe coding help",
     "AI product studio",
     "Minnesota AI",
     "MNMuslim",

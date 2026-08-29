@@ -4,7 +4,7 @@
 
 import { taglineWords, products, socials } from "./site";
 
-const bookingLink = "https://calendly.com/hamdi2008/ai-mvp-strategy-session";
+const googleFormLink = "https://forms.gle/nRzHwcCW9GF7JLrL8";
 
 export const hero = {
   headline: {
@@ -13,7 +13,10 @@ export const hero = {
     after: " AI-powered products.",
   },
   supporting: taglineWords,
-  primaryCta: { label: "Book an AI MVP Strategy Session", href: bookingLink },
+  // Scrolls to the Vibe Coding Help section (#book below) rather than
+  // linking straight to the request form — visitors should understand the
+  // service before being asked to submit a project.
+  primaryCta: { label: "Get Vibe Coding Help", href: "#book" },
   recentlyShipped: {
     eyebrow: "Recently shipped",
     links: products.map((p, i) => ({
@@ -82,18 +85,39 @@ export const productsSection = {
   ],
 };
 
-export const strategySession = {
-  heading: { before: "AI MVP Strategy ", accent: "Session", after: "." },
-  intro: "Have an idea but not sure what to build first?",
-  body: "This one-on-one session is designed to help you gain clarity before investing your time and energy. Together, we'll evaluate your idea, define a practical MVP, and create a plan you can confidently move forward with.",
-  panelEyebrow: "You'll leave with",
-  checklist: [
-    { text: "A clearer product direction", accent: "orange" as const },
-    { text: "A practical MVP plan", accent: "purple" as const },
-    { text: "Recommended AI tools for your project", accent: "orange" as const },
-    { text: "Clear next steps", accent: "purple" as const },
+export const vibeCodingHelp = {
+  heading: { before: "Vibe Coding Help ", accent: "Session", after: "." },
+  intro: "Built something with AI but stuck on what comes next?",
+  body: [
+    "If you've already started building with Claude, ChatGPT, Cursor, or another AI tool and reached a point where you're not sure what to do next, bring your project and your blocker.",
+    "I'll review what you send before we meet to make sure it's something I can help with. If it is, we'll spend 60–90 minutes working through your specific blocker and toward a solution together.",
   ],
-  cta: { label: "Book an AI MVP Strategy Session", href: bookingLink },
+  price: { amount: "$99", duration: "60–90 minutes" },
+  panelEyebrow: "You might be stuck on",
+  checklist: [
+    {
+      title: "Getting your prototype out of the AI tool",
+      description: "You've built something, but don't know how to take it further.",
+      accent: "orange" as const,
+    },
+    {
+      title: "Getting your product live",
+      description: "You're trying to deploy or share what you've built outside the tool.",
+      accent: "purple" as const,
+    },
+    {
+      title: "Making something actually work",
+      description: "A feature, connection, setup, or error is stopping you from moving forward.",
+      accent: "orange" as const,
+    },
+    {
+      title: "Figuring out what comes next",
+      description: "You don't know what your product still needs, what can wait, or what you should tackle next.",
+      accent: "purple" as const,
+    },
+  ],
+  cta: { label: "Request Help", href: googleFormLink },
+  helperText: "Tell me about your project first. You won't be charged or booked when submitting a request.",
 };
 
 export const about = {
@@ -102,7 +126,7 @@ export const about = {
   lead: { before: "I love building ", accent: "useful", after: " products that solve real problems." },
   paragraphs: [
     "AI has completely changed the way I build. It allows me to turn ideas into working products faster than ever while continuously learning and improving along the way.",
-    "Through By Hamdi, I share that journey openly and help founders build useful products with greater clarity and confidence.",
+    "Through By Hamdi, I share what I'm building, what I'm learning, and what it actually takes to turn AI-built ideas into real products.",
   ],
 };
 

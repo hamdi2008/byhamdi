@@ -40,7 +40,7 @@ export const products = [
 export const footerNav = {
   explore: [
     { label: "Products", href: "#bh-products" },
-    { label: "Strategy Session", href: "#book" },
+    { label: "Vibe Coding Help", href: "#book" },
     { label: "About", href: "#about" },
     { label: "Building in public", href: "#building" },
   ],

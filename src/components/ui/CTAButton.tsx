@@ -13,7 +13,7 @@ const sizes = {
   md: "text-[clamp(16px,1.3vw,19px)] px-[34px] py-5 gap-3.5",
 };
 
-/** Primary orange pill CTA — used for the hero and strategy session book-a-session actions. */
+/** Primary orange pill CTA — used for the hero and Vibe Coding Help actions. */
 export default function CTAButton({ href, label, size = "lg", className = "" }: CTAButtonProps) {
   return (
     <Link
