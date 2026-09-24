@@ -1,53 +1,66 @@
-import { socials } from "@/content/site";
+// Homepage copy — source of truth for section content.
+// Mirrors content/homepage-content.md in the design handoff. Edit copy here;
+// do not hardcode strings in components.
+
+import { taglineWords, products, socials } from "./site";
 
 const googleFormLink = "https://forms.gle/nRzHwcCW9GF7JLrL8";
 
-type ProductId = "lifeinviews" | "mnsomali" | "mnmuslim" | "mnhalal";
-
 export const hero = {
-  eyebrow: "One-person AI product studio · Minnesota",
-  heading: {
-    before: "I build ",
+  headline: {
+    before: "Building ",
     accent: "useful",
-    after: " products with AI.",
+    after: " AI-powered products.",
   },
-  body: "I'm Hamdi — a builder using AI to turn ideas into real products, learning in public and sharing the process along the way.",
-  primaryCta: { label: "See what I've built", href: "#bh-products" },
-  secondaryCta: { label: "Follow the journey", href: "#building" },
+  supporting: taglineWords,
+  primaryCta: { label: "Get Vibe Coding Help", href: "/vibe-coding-help" },
+  recentlyShipped: {
+    eyebrow: "Recently shipped",
+    links: products.map((p, i) => ({
+      label: p.label,
+      href: p.href,
+      accent: (i % 2 === 0 ? "orange" : "purple") as "orange" | "purple",
+    })),
+  },
 };
 
+export type ProductId = "lifeinviews" | "mnsomalis" | "mnmuslim" | "mnhalal";
+
 export const productsSection = {
-  eyebrow: "Products I've built",
-  heading: { before: "Small bets. ", accent: "Real", after: " products." },
-  intro: "I build and ship products around problems I understand — then learn from what happens next.",
+  eyebrow: null,
+  heading: { before: "Products I've ", accent: "Built", after: "" },
+  supporting: "Building useful AI-powered products.",
   items: [
     {
       id: "lifeinviews" as ProductId,
       plainName: "Life in Views",
-      name: { before: "Life in ", accent: "Views", after: "" },
-      description: "A personal life-planning system for seeing what matters across today, this week, month, year, and long-term.",
+      name: { before: "Life in Views", accent: "", after: "" },
+      description:
+        "A personal operating system for organizing your priorities, tracking what matters, and reflecting on your progress.",
       href: "https://lifeinviews.com",
       accent: "purple" as const,
       medallionTint: "purple" as const,
       side: "left" as const,
-      flagship: true,
+      flagship: false,
     },
     {
-      id: "mnsomali" as ProductId,
+      id: "mnsomalis" as ProductId,
       plainName: "MN Somali",
-      name: { before: "MN ", accent: "Somali", after: "" },
-      description: "A public reference site compiling reliable data and sources about Somali Minnesotans.",
+      name: { before: "MN Somali", accent: "", after: "" },
+      description:
+        "Discover data, context, and sourced information about Minnesota’s Somali community.",
       href: "https://www.mnsomalis.com/",
-      accent: "orange" as const,
-      medallionTint: "orange" as const,
+      accent: "purple" as const,
+      medallionTint: "purple" as const,
       side: "right" as const,
       flagship: false,
     },
     {
       id: "mnmuslim" as ProductId,
       plainName: "MNMuslim",
-      name: { before: "MN", accent: "Muslim", after: "" },
-      description: "A digital home for Muslims in Minnesota — local services, events, and community resources.",
+      name: { before: "MNMuslim", accent: "", after: "" },
+      description:
+        "Discover Muslim services, halal food, businesses, and community resources.",
       href: "https://www.mnmuslim.com/",
       accent: "orange" as const,
       medallionTint: "purple" as const,
@@ -58,7 +71,8 @@ export const productsSection = {
       id: "mnhalal" as ProductId,
       plainName: "MNHalal",
       name: { before: "MNHalal", accent: "", after: "" },
-      description: "Discover halal restaurants, cafés, bakeries, and markets across Minnesota.",
+      description:
+        "Discover halal restaurants, cafés, bakeries, and markets across Minnesota.",
       href: "https://www.mnhalal.com/",
       accent: "orange" as const,
       medallionTint: "orange" as const,
@@ -99,9 +113,8 @@ export const vibeCodingHelp = {
       accent: "purple" as const,
     },
   ],
-  cta: { label: "Learn More", href: "/vibe-coding-help" },
-  requestCta: { label: "Request Help", href: googleFormLink },
-  helperText: "Learn how the session works, then tell me about your project and blocker.",
+  cta: { label: "Request Help", href: googleFormLink },
+  helperText: "Tell me about your project first. You won't be charged or booked when submitting a request.",
 };
 
 export const about = {
@@ -131,7 +144,7 @@ export const buildingInPublic = {
     {
       id: "github" as const,
       name: "GitHub",
-      description: "Code, experiments, and shipped products.",
+      description: "Open code, experiments, works in progress.",
       actionLabel: "Follow",
       arrow: "↗",
       href: socials.github,
@@ -139,8 +152,8 @@ export const buildingInPublic = {
     },
     {
       id: "x" as const,
-      name: "X / Twitter",
-      description: "Build-in-public updates, ideas, and lessons.",
+      name: "X",
+      description: "Daily notes from the build.",
       actionLabel: "Follow",
       arrow: "↗",
       href: socials.x,
