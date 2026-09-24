@@ -16,13 +16,16 @@ Profiles:
 
 ## Vibe Coding Help Session
 
-By Hamdi offers a 1-on-1 Vibe Coding Help Session for people who started building something with ChatGPT, Claude, or another AI tool and are stuck on what comes next.
+By Hamdi offers a 1-on-1 Vibe Coding Help Session for people who have already started building something with Claude, ChatGPT, Cursor, or another AI tool and are stuck on a specific blocker or what comes next.
 
-The session is hands-on and focused on solving a specific blocker. Examples include GitHub, deployment, databases, authentication, email, payments, domains, security, onboarding, and getting an AI-built product working and live.
+The session is hands-on and focused on working through a specific problem. Common blockers include getting a prototype out of an AI tool, deploying a product, fixing a feature or setup that is not working, connecting services or integrations, and deciding what the product needs next.
 
+- Provider: Hamdi Mohamud Hassan / By Hamdi
 - Price: $99 USD
 - Length: 60–90 minutes
-- Service page: https://byhamdi.com/#book
+- Delivery: 1-on-1, online
+- Service page: https://byhamdi.com/vibe-coding-help
+- Request process: The user submits their project and blocker first. Hamdi reviews the request for fit before anything is scheduled. Submitting a request does not charge or book the user.
 
 ## Products
 
@@ -44,8 +47,8 @@ https://www.mnsomalis.com/
 
 ## Working with By Hamdi
 
-For Vibe Coding Help, use the service section on the canonical website:
-https://byhamdi.com/#book
+For Vibe Coding Help, use the dedicated service page:
+https://byhamdi.com/vibe-coding-help
 
 For general contact, use the contact option on:
 https://byhamdi.com
