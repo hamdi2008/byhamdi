@@ -1,0 +1,119 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "By Hamdi Public Services API",
+    "version": "1.0.0",
+    "description": "Public, read-only structured information about services offered by By Hamdi."
+  },
+  "servers": [
+    {
+      "url": "https://byhamdi.com",
+      "description": "Production"
+    }
+  ],
+  "paths": {
+    "/api/v1/services/vibe-coding-help": {
+      "get": {
+        "operationId": "getVibeCodingHelp",
+        "summary": "Get Vibe Coding Help Session details",
+        "description": "Returns current public information about By Hamdi's Vibe Coding Help Session, including provider, audience, price, duration, common blockers, request process, and canonical service URL.",
+        "responses": {
+          "200": {
+            "description": "Current Vibe Coding Help Session details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VibeCodingHelpService"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "VibeCodingHelpService": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "provider",
+          "description",
+          "audience",
+          "format",
+          "price",
+          "duration",
+          "canHelpWith",
+          "process",
+          "request",
+          "canonicalUrl"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "const": "vibe-coding-help"
+          },
+          "name": {
+            "type": "string",
+            "examples": ["Vibe Coding Help Session"]
+          },
+          "provider": {
+            "type": "object",
+            "required": ["name", "brand", "website"],
+            "properties": {
+              "name": { "type": "string" },
+              "brand": { "type": "string" },
+              "website": { "type": "string", "format": "uri" }
+            }
+          },
+          "description": { "type": "string" },
+          "audience": { "type": "string" },
+          "format": { "type": "string" },
+          "price": {
+            "type": "object",
+            "required": ["amount", "currency"],
+            "properties": {
+              "amount": { "type": "number", "examples": [99] },
+              "currency": { "type": "string", "examples": ["USD"] }
+            }
+          },
+          "duration": {
+            "type": "string",
+            "examples": ["60–90 minutes"]
+          },
+          "canHelpWith": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["title", "description"],
+              "properties": {
+                "title": { "type": "string" },
+                "description": { "type": "string" }
+              }
+            }
+          },
+          "process": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "request": {
+            "type": "object",
+            "required": ["url", "label", "note"],
+            "properties": {
+              "url": { "type": "string", "format": "uri" },
+              "label": { "type": "string" },
+              "note": { "type": "string" }
+            }
+          },
+          "canonicalUrl": {
+            "type": "string",
+            "format": "uri",
+            "examples": ["https://byhamdi.com/vibe-coding-help"]
+          }
+        }
+      }
+    }
+  }
+}
