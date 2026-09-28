@@ -44,6 +44,17 @@ const structuredData = {
     url: pageUrl,
     availability: "https://schema.org/InStock",
   },
+  potentialAction: {
+    "@type": "ApplyAction",
+    name: "Request Vibe Coding Help",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: requestUrl,
+      actionPlatform: "https://schema.org/DesktopWebPlatform",
+    },
+    description:
+      "Submit what you built and where you are stuck for Hamdi to review. Submitting this request does not charge you or book a session.",
+  },
 };
 
 export default function VibeCodingHelpPage() {
