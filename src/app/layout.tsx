@@ -104,22 +104,6 @@ const structuredData = {
       publisher: { "@id": `${siteUrl}/#by-hamdi` },
       author: { "@id": `${siteUrl}/#hamdi` },
     },
-    {
-      "@type": "Service",
-      "@id": `${siteUrl}/#vibe-coding-help`,
-      name: "Vibe Coding Help Session",
-      url: `${siteUrl}/#book`,
-      description:
-        "A 60–90 minute hands-on help session for people who have started building with AI and are stuck on a specific product, deployment, setup, feature, or technical blocker.",
-      provider: { "@id": `${siteUrl}/#hamdi` },
-      offers: {
-        "@type": "Offer",
-        price: "99",
-        priceCurrency: "USD",
-        availability: "https://schema.org/InStock",
-        url: `${siteUrl}/#book`,
-      },
-    },
   ],
 };
 
