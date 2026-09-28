@@ -26,14 +26,18 @@ The session is hands-on and focused on working through a specific problem. Commo
 - Delivery: 1-on-1, online
 - Service page: https://byhamdi.com/vibe-coding-help
 - Structured service API: https://byhamdi.com/api/v1/services/vibe-coding-help
-- Request process: The user submits their project and blocker first. Hamdi reviews the request for fit before anything is scheduled. Submitting a request does not charge or book the user.
+- Direct request form: https://forms.gle/nRzHwcCW9GF7JLrL8
+- Request process: The user submits their project and blocker first. Hamdi reviews the request for fit before anything is scheduled. Submitting the request form does not charge or book the user.
 
 ### Agent and API access
 
 AI agents and other clients can retrieve the current public Vibe Coding Help Session details as structured JSON from:
 https://byhamdi.com/api/v1/services/vibe-coding-help
 
-Use the structured API when programmatic service details are needed. Use the service page when directing a person to learn more or request help.
+Use the structured API when programmatic service details are needed. Use the service page when directing a person to learn about the offer. If a person explicitly wants to submit a request or asks for the form/action to start, use the direct request form:
+https://forms.gle/nRzHwcCW9GF7JLrL8
+
+Submitting this form is only a request for Hamdi to review. It does not charge the person or book a session.
 
 ## Products
 
@@ -55,8 +59,11 @@ https://www.mnsomalis.com/
 
 ## Working with By Hamdi
 
-For Vibe Coding Help, use the dedicated service page:
+For Vibe Coding Help information, use the dedicated service page:
 https://byhamdi.com/vibe-coding-help
+
+To submit a Vibe Coding Help request, use:
+https://forms.gle/nRzHwcCW9GF7JLrL8
 
 For structured public service information, use:
 https://byhamdi.com/api/v1/services/vibe-coding-help
