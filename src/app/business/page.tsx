@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Nav from "@/components/sections/Nav";
 import Footer from "@/components/sections/Footer";
+import AccentText from "@/components/ui/AccentText";
+import Button from "@/components/ui/Button";
 import Eyebrow from "@/components/ui/Eyebrow";
+import MonoTagline from "@/components/ui/MonoTagline";
+import Section, { sectionHeading } from "@/components/ui/Section";
+import Steps, { type Step } from "@/components/ui/Steps";
+import TextLink from "@/components/ui/TextLink";
+import Wordmark from "@/components/ui/Wordmark";
+import { externalLinkProps } from "@/lib/links";
 
 const pageUrl = "https://byhamdi.com/business";
 const reviewUrl = "https://forms.gle/aJuBMpbNd7JY6JHbA";
@@ -14,22 +21,63 @@ export const metadata: Metadata = {
   openGraph: { title: "Digital Presence & AI Readiness — By Hamdi", description: "Business digital presence cleanup, website and search improvements, customer action fixes, and AI readiness from Hamdi Mohamud Hassan.", url: pageUrl, type: "website" },
 };
 
-const reviewAreas = [
-  ["Digital presence", "Accuracy and consistency of the important information customers find about your business online."],
-  ["Website", "Broken links, outdated information, confusing pages, and other problems that can get in a customer's way."],
-  ["Search & SEO", "The foundation that helps search engines find, index, and understand your business."],
-  ["Identity & trust", "Clear connections between your business, services, locations, official profiles, and the people behind it when relevant."],
-  ["Customer actions", "Whether people can successfully call, order, book, visit, contact you, register, or request a quote."],
-  ["AI & agent readiness", "Whether AI assistants can correctly understand your business and point people toward the right next step."],
+const mnhalal = "https://www.mnhalal.com/";
+const mnmuslim = "https://www.mnmuslim.com/";
+
+const questionSteps = [
+  ["Find", "Show up when someone looks for what you offer."],
+  ["Understand", "Make it clear what you do, where, and when."],
+  ["Act", "Make it easy to call, order, book, or visit."],
 ];
 
-const process = [
-  ["1. Request a free review", "Tell me about your business through a short form."],
-  ["2. I review your online presence", "I look for important problems and opportunities across your website, search presence, customer paths, and AI discovery."],
-  ["3. You get the findings", "I explain the most important things I found and what I recommend fixing."],
-  ["4. Decide if you want my help", "If I can help implement the improvements, I'll give you a project quote. There's no obligation to proceed."],
-  ["5. I fix and retest", "If you move forward, I implement the agreed improvements and test the business again afterward."],
+const problems = [
+  ["Different details in different places", "Your website, Google, and a directory each list slightly different hours, phone numbers, or addresses."],
+  ["An outdated website", "Old menus or prices, a location that moved, or a page that hasn't been touched in years."],
+  ["Services that aren't clearly explained", "People can't tell exactly what you offer, who it's for, or whether you serve their area."],
+  ["A scattered online presence", "Forgotten profiles, duplicate listings, and links that lead nowhere."],
+  ["No clear next step", "Visitors can't easily call, order, book, get directions, or reach the right person."],
+  ["Information that's hard to understand online", "Important details about what you offer, where you operate, or how customers can take action aren't clearly presented."],
 ];
+
+const reviewAreas = [
+  ["Presence", "Is your business represented accurately online?"],
+  ["Website", "Can people quickly understand what your business does?"],
+  ["Discovery", "Is there a solid foundation for being found through search?"],
+  ["Information", "Are your services, location, contact details, offerings, and next steps clear and easy to get to?"],
+  ["AI readiness", "Where it makes sense for your business, is your information organized so newer AI-powered search tools can understand it?"],
+];
+
+const reviewQuestions = [
+  "What's already working?",
+  "What information is missing, inconsistent, or hard to find?",
+  "What should be fixed first?",
+  "Are there real opportunities to improve how you show up in search or AI tools?",
+];
+
+const process: Step[] = [
+  { title: "Review", body: "You fill out a short form about your business. I look at your public online presence.", tag: { label: "Free", tone: "free" } },
+  { title: "Findings", body: "I share what's already working and what's missing, inconsistent, or hard to find.", tag: { label: "Free", tone: "free" } },
+  { title: "Priorities", body: "I tell you what I'd fix first, and why.", tag: { label: "Free", tone: "free" } },
+  { title: "Fix", body: "If there's work worth doing and I can help, I'll give you a quote. You decide whether to go ahead.", tag: { label: "Only if you choose", tone: "paid" } },
+];
+
+const directoryLinks = [
+  { label: "List a halal food business on MNHalal ↗", href: "https://www.mnhalal.com/submit", color: "orange" as const },
+  { label: "List a business or service on MNMuslim ↗", href: "https://mnmuslim.com/submit", color: "purple" as const },
+];
+
+const instagram = [
+  { handle: "@mnhalalfood", href: "https://www.instagram.com/mnhalalfood/", color: "text-bh-orange-deep", description: "Helping people discover halal food in Minnesota while giving local halal food businesses another way to reach customers." },
+  { handle: "@mnmuslimbusinesses", href: "https://www.instagram.com/mnmuslimbusinesses/", color: "text-bh-purple", description: "Helping people discover Muslim businesses and service providers in Minnesota while giving those businesses another way to reach the local community." },
+  { handle: "@mnmuslimevents", href: "https://www.instagram.com/mnmuslimevents/", color: "text-bh-purple", description: "Helping people discover Muslim events across Minnesota while giving organizers another way to reach the community." },
+];
+
+const pad = (i: number) => String(i + 1).padStart(2, "0");
+const bodyText = "m-0 text-[17px] leading-[1.65] font-medium text-bh-body";
+const proseText = "m-0 text-[clamp(16px,1.4vw,19px)] leading-[1.65] font-medium text-bh-body";
+const note = "m-0 text-sm leading-[1.55] font-medium text-bh-muted";
+const formCta = "self-start max-sm:self-stretch";
+const splitHeader = "grid grid-cols-[repeat(auto-fit,minmax(min(100%,420px),1fr))] items-end gap-x-16 gap-y-4";
 
 const structuredData = {
   "@context": "https://schema.org", "@type": "Service", "@id": `${pageUrl}/#service`, name: "Digital Presence & AI Readiness", url: pageUrl,
@@ -41,35 +89,190 @@ const structuredData = {
 
 export default function BusinessPage() {
   return (
-    <main className="relative z-[1] min-h-screen">
+    <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <Nav />
-      <section className="px-6 pt-12 pb-16 sm:px-[52px] sm:pt-20"><div className="mx-auto max-w-[980px]"><Eyebrow>For businesses</Eyebrow><h1 className="mt-5 max-w-[15ch] text-[clamp(44px,7vw,84px)] leading-[.94] font-bold tracking-[-.055em] text-bh-ink">Digital Presence & AI Readiness.</h1><p className="mt-7 max-w-[38ch] text-[clamp(21px,2.3vw,30px)] leading-[1.25] font-semibold tracking-[-.025em] text-bh-ink-purple">Clean up your business online and get ready for how customers discover businesses now and next.</p><p className="mt-5 max-w-[64ch] text-[17px] leading-[1.7] font-medium text-bh-body sm:text-[19px]">I help businesses fix important problems across their online presence, improve their search foundation, make customer actions clearer, and prepare for discovery through AI assistants.</p><Link href={reviewUrl} target="_blank" rel="noopener noreferrer" className="mt-8 inline-block rounded-full bg-bh-purple px-7 py-3.5 text-[15px] font-bold text-white no-underline transition-transform duration-200 hover:-translate-y-0.5">Request a Free Business Presence Review</Link><p className="mt-3 text-sm font-medium text-bh-muted">The review is free. If I find work I can help with, I'll explain what I recommend and give you a quote before any paid work begins.</p></div></section>
+      <main className="relative z-[1] font-grotesk text-bh-ink">
+        <section id="biz-hero" className="px-[clamp(20px,4vw,52px)] pt-[clamp(40px,8vw,104px)] pb-[clamp(56px,8vw,104px)]">
+          <div className="mx-auto grid max-w-[1180px] grid-cols-[repeat(auto-fit,minmax(min(100%,460px),1fr))] items-center gap-[clamp(36px,5vw,72px)]">
+            <div className="flex flex-col gap-5">
+              <Eyebrow>For businesses</Eyebrow>
+              <h1 className="m-0 max-w-[13ch] text-[clamp(42px,6.4vw,84px)] leading-[.93] font-bold tracking-[-.055em]">
+                <AccentText before="Digital Presence & AI " accent="Readiness" after="." color="purple" />
+              </h1>
+              <p className="mt-1 mb-0 max-w-[26ch] text-[clamp(21px,2.2vw,28px)] leading-[1.25] font-semibold tracking-[-.025em] text-bh-ink-purple">Your business is online. Can people find it, understand it, and take the next step?</p>
+              <p className={`${bodyText} max-w-[54ch] leading-[1.68]`}>I help businesses make sure the information about them online is accurate, clear, and easy to act on. That matters for customers, search engines, and the AI tools people increasingly use to discover businesses.</p>
+              <div className="mt-2 flex flex-col gap-3">
+                <Button href={reviewUrl} label="Get a Free Business Presence Review" className={formCta} />
+                <p className={`${note} max-w-[54ch]`}>The review is free. If I find work I can help with, I&apos;ll explain what I recommend and give you a quote before any paid work begins.</p>
+              </div>
+            </div>
+            <div className="flex flex-col gap-[clamp(18px,2.4vw,26px)] rounded-[28px] bg-bh-ink-purple p-[clamp(26px,3.4vw,44px)] text-bh-bg shadow-[0_40px_70px_-40px_rgba(36,26,51,.7)]">
+              <Eyebrow tone="dark">The question behind the review</Eyebrow>
+              <p className="m-0 text-[clamp(22px,2.4vw,30px)] leading-[1.2] font-semibold tracking-[-.03em] text-pretty">
+                <AccentText before="Can people, and the systems they use, find, understand, and act on " accent="accurate" after=" information about your business?" color="orange-light" />
+              </p>
+              <ol className="m-0 flex list-none flex-col p-0">
+                {questionSteps.map(([title, description], i) => (
+                  <li key={title} className={`grid grid-cols-[28px_minmax(0,1fr)] gap-x-3.5 gap-y-1 border-t border-bh-bg/[.14] pt-3.5 ${i < questionSteps.length - 1 ? "pb-3.5" : ""}`}>
+                    <span className="font-mono-bh pt-[5px] text-xs text-bh-orange-light">{pad(i)}</span>
+                    <b className="text-[19px] tracking-[-.02em]">{title}</b>
+                    <span />
+                    <span className="text-[15px] leading-[1.5] font-medium text-[#d9d1e6]">{description}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
+        </section>
 
-      <section className="px-6 py-16 sm:px-[52px]"><div className="mx-auto max-w-[980px]"><Eyebrow>Small online problems can cost real customers</Eyebrow><h2 className="mt-5 max-w-[18ch] text-[clamp(32px,4.5vw,54px)] leading-[1] font-bold tracking-[-.045em] text-bh-ink">Your business can be open while the internet tells customers something different.</h2><p className="mt-6 max-w-[65ch] text-[17px] leading-[1.7] font-medium text-bh-body">A dead website. An order button going to the wrong location. Different hours or phone numbers across the web. An old domain redirecting somewhere it shouldn't. Search engines showing outdated information. AI assistants unable to understand what your business actually offers. These are the kinds of problems I look for and help businesses fix.</p></div></section>
+        <Section id="biz-problem" tone="band" innerClassName="flex flex-col gap-[clamp(28px,4vw,52px)]">
+          <div className={splitHeader}>
+            <div className="flex flex-col gap-4">
+              <Eyebrow>The problem</Eyebrow>
+              <h2 className={`${sectionHeading} max-w-[16ch]`}>
+                <AccentText before="Being online isn't the same as being " accent="easy to find" after="." color="purple" />
+              </h2>
+            </div>
+            <p className={`${bodyText} max-w-[46ch]`}>Most of these are small and easy to miss from the inside. Customers notice them right away, and often just move on to the next business.</p>
+          </div>
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,300px),1fr))] gap-x-10">
+            {problems.map(([title, description], i) => (
+              <div key={title} className="grid grid-cols-[auto_minmax(0,1fr)] gap-x-3.5 gap-y-1.5 border-t border-[#e0d6c2] py-[22px]">
+                <span aria-hidden="true" className={`mt-[9px] h-2 w-2 rounded-full ${i % 2 === 0 ? "bg-bh-orange" : "bg-bh-purple"}`} />
+                <h3 className="m-0 text-[19px] leading-[1.3] font-bold tracking-[-.02em] text-bh-ink-purple">{title}</h3>
+                <span />
+                <p className="m-0 text-[15.5px] leading-[1.6] font-medium text-[#5a544a]">{description}</p>
+              </div>
+            ))}
+          </div>
+        </Section>
 
-      <section className="px-6 py-16 sm:px-[52px]"><div className="mx-auto max-w-[980px]"><Eyebrow>What I review</Eyebrow><h2 className="mt-5 text-[clamp(32px,4.5vw,54px)] leading-[1] font-bold tracking-[-.045em] text-bh-ink">Your whole digital presence, not just AI.</h2><div className="mt-8 grid gap-5 md:grid-cols-2">{reviewAreas.map(([title, description]) => <div key={title} className="rounded-3xl border border-bh-hairline bg-bh-card/70 p-7"><h3 className="text-xl font-bold tracking-[-.02em] text-bh-ink-purple">{title}</h3><p className="mt-2 leading-[1.6] font-medium text-bh-muted">{description}</p></div>)}</div><div className="mt-8 rounded-3xl border border-bh-hairline bg-bh-card/70 p-8"><Eyebrow>Agent-Ready Business framework</Eyebrow><p className="mt-4 text-[clamp(21px,2.4vw,30px)] font-bold tracking-[-.025em] text-bh-ink-purple">Discover → Understand → Trust → Act → Measure</p><p className="mt-3 max-w-[64ch] leading-[1.65] font-medium text-bh-muted">The goal is not to promise that an AI assistant will recommend your business. It's to give customers, search engines, and AI systems clearer, more trustworthy information about who you are, what you offer, and what someone can do next.</p></div></div></section>
+        <Section id="biz-areas" innerClassName="flex flex-col gap-[clamp(32px,4.5vw,56px)]">
+          <div className={splitHeader}>
+            <div className="flex flex-col gap-4">
+              <Eyebrow>What I look at</Eyebrow>
+              <h2 className={`${sectionHeading} max-w-[15ch]`}>
+                <AccentText before="One connected picture of your business " accent="online" after="." color="purple" />
+              </h2>
+            </div>
+            <p className={`${bodyText} max-w-[46ch]`}>These areas affect each other, so I look at them together. Not every business needs work in every area. The review shows where it actually matters for yours.</p>
+          </div>
+          {/* Horizontal track at ≥900px; vertical rail below. */}
+          <div className="relative max-[900px]:pl-[34px]">
+            <div aria-hidden="true" className="absolute top-[9px] right-[9px] left-[9px] h-[1.5px] bg-[linear-gradient(90deg,#ff6a3d,#c14a6e_60%,#5e2fb0)] opacity-35 max-[900px]:top-2.5 max-[900px]:right-auto max-[900px]:bottom-2.5 max-[900px]:h-auto max-[900px]:w-[1.5px] max-[900px]:bg-[linear-gradient(180deg,#ff6a3d,#c14a6e_60%,#5e2fb0)]" />
+            <ol className="relative m-0 grid list-none gap-5 p-0 max-[900px]:gap-[26px] min-[900px]:grid-cols-5">
+              {reviewAreas.map(([title, description], i) => {
+                const purple = i >= 3;
+                return (
+                  <li key={title} className="relative flex flex-col gap-3 max-[900px]:gap-1.5">
+                    <span aria-hidden="true" className={`flex h-[19px] w-[19px] items-center justify-center rounded-full border-2 bg-bh-bg max-[900px]:absolute max-[900px]:top-[3px] max-[900px]:-left-[34px] ${purple ? "border-bh-purple" : "border-bh-orange"}`}>
+                      <span className={`h-[7px] w-[7px] rounded-full ${purple ? "bg-bh-purple" : "bg-bh-orange"}`} />
+                    </span>
+                    <div className="flex flex-col gap-3 max-[900px]:flex-row max-[900px]:items-baseline max-[900px]:gap-2.5">
+                      <span className={`font-mono-bh text-xs min-[900px]:mt-2 ${purple ? "text-bh-purple" : "text-bh-orange"}`}>{pad(i)}</span>
+                      <h3 className="m-0 text-[22px] font-bold tracking-[-.025em] text-bh-ink-purple max-[900px]:text-[21px]">{title}</h3>
+                    </div>
+                    <p className="m-0 text-[15.5px] leading-[1.55] font-medium text-[#5a544a]">{description}</p>
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
+        </Section>
 
-      <section className="px-6 py-16 sm:px-[52px]"><div className="mx-auto max-w-[980px]"><Eyebrow>How it works</Eyebrow><div className="mt-7 grid gap-5 md:grid-cols-2">{process.map(([title, description]) => <div key={title} className="rounded-3xl border border-bh-hairline bg-bh-card/70 p-7"><h3 className="text-xl font-bold tracking-[-.02em] text-bh-ink-purple">{title}</h3><p className="mt-2 leading-[1.6] font-medium text-bh-muted">{description}</p></div>)}</div></div></section>
+        <Section id="biz-review" flush="top" innerClassName="grid grid-cols-[repeat(auto-fit,minmax(min(100%,440px),1fr))] items-center gap-[clamp(32px,5vw,72px)] rounded-[32px] border border-bh-hairline bg-bh-card p-[clamp(28px,5vw,72px)]">
+          <div className="flex flex-col gap-[18px]">
+            <Eyebrow>Start here</Eyebrow>
+            <h2 className={sectionHeading}>
+              <AccentText before="Start with a free " accent="review" after="." color="orange" />
+            </h2>
+            <p className={`${bodyText} max-w-[46ch]`}>Before recommending any work, I look at how your business currently shows up online and point out the problems and opportunities that actually matter.</p>
+            <div className="mt-1.5 flex flex-col gap-3">
+              <Button href={reviewUrl} label="Get a Free Business Presence Review" className={formCta} />
+              <p className={`${note} max-w-[46ch]`}>The review is an assessment, not the fixes themselves. Any implementation work is quoted separately, and only if you want it.</p>
+            </div>
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <Eyebrow className="mb-2">The review helps answer</Eyebrow>
+            {reviewQuestions.map((question, i) => (
+              <div key={question} className="grid grid-cols-[32px_minmax(0,1fr)] items-baseline gap-3.5 border-t border-bh-hairline py-4">
+                <span className={`font-mono-bh text-[13px] font-bold ${i === reviewQuestions.length - 1 ? "text-bh-purple" : "text-bh-orange"}`}>{pad(i)}</span>
+                <span className="text-[clamp(18px,1.8vw,22px)] leading-[1.3] font-semibold tracking-[-.02em] text-bh-ink-purple">{question}</span>
+              </div>
+            ))}
+          </div>
+        </Section>
 
-      <section className="px-6 py-16 sm:px-[52px]"><div className="mx-auto max-w-[980px]"><div className="rounded-3xl border border-bh-hairline bg-bh-card/70 p-8"><Eyebrow>Pricing</Eyebrow><h2 className="mt-5 text-3xl font-bold tracking-[-.035em] text-bh-ink">Every business is different.</h2><p className="mt-4 max-w-[65ch] leading-[1.65] font-medium text-bh-muted">Some businesses need a few targeted fixes. Others have larger website, search, identity, or customer-experience problems. I start with the free review, then recommend a scope and give you a price before any paid work begins.</p></div></div></section>
+        <Section id="biz-process" tone="band" innerClassName="flex flex-col gap-[clamp(32px,4.5vw,56px)]">
+          <div className="flex flex-col gap-4">
+            <Eyebrow>What happens after the review</Eyebrow>
+            <h2 className={`${sectionHeading} max-w-[18ch]`}>
+              <AccentText before="Clear steps. " accent="No obligation" after="." color="purple" />
+            </h2>
+          </div>
+          <Steps steps={process} rail titleClassName="text-[26px]" />
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,340px),1fr))] items-baseline gap-x-12 gap-y-3 border-t border-[#e0d6c2] pt-[clamp(22px,3vw,32px)]">
+            <h3 className="m-0 text-[clamp(22px,2.4vw,28px)] font-bold tracking-[-.03em] text-bh-ink-purple">What you&apos;re committing to</h3>
+            <p className="m-0 text-base leading-[1.65] font-medium text-bh-body">Nothing beyond filling out the form. I&apos;ll look at your public online presence, share the most important things I find, and tell you what I&apos;d recommend fixing. There&apos;s no obligation to purchase anything.</p>
+          </div>
+        </Section>
 
-      <section className="px-6 py-20 sm:px-[52px]"><div className="mx-auto max-w-[980px]"><Eyebrow>For Minnesota Muslim businesses & halal food businesses</Eyebrow><h2 className="mt-5 max-w-[18ch] text-[clamp(32px,4.5vw,54px)] leading-[1] font-bold tracking-[-.045em] text-bh-ink">Fix your presence. Then help more people find you.</h2><p className="mt-6 max-w-[67ch] text-[17px] leading-[1.7] font-medium text-bh-body">I also run two Minnesota directories with different purposes: MNHalal helps people discover halal food businesses, while MNMuslim helps people discover Muslim businesses and service providers outside the food category. If your business fits one of those directories, it gives you another relevant place to be discovered beyond your own website and search presence.</p>
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
-          <div className="rounded-3xl border border-bh-hairline bg-bh-card/70 p-8"><h3 className="text-2xl font-bold tracking-[-.03em] text-bh-ink-purple">Get listed for free</h3><p className="mt-3 leading-[1.65] font-medium text-bh-muted"><strong>MNHalal is for halal food businesses</strong> such as restaurants, cafés, bakeries, food trucks, caterers, markets, and other halal food options. <strong>MNMuslim is for Muslim businesses and service providers outside the food category</strong>, such as professional services, education, health and wellness, home services, and other local services. Listings are free.</p><div className="mt-6 flex flex-wrap gap-3"><Link href="https://www.mnhalal.com/submit" target="_blank" rel="noopener noreferrer" className="rounded-full bg-bh-purple px-5 py-2.5 text-sm font-bold text-white no-underline">List a halal food business on MNHalal →</Link><Link href="https://mnmuslim.com/submit" target="_blank" rel="noopener noreferrer" className="rounded-full border border-bh-purple px-5 py-2.5 text-sm font-bold text-bh-purple no-underline">List a business or service on MNMuslim →</Link></div></div>
-          <div className="rounded-3xl border border-bh-hairline bg-bh-card/70 p-8"><h3 className="text-2xl font-bold tracking-[-.03em] text-bh-ink-purple">Improve your listing through the free review</h3><p className="mt-3 leading-[1.65] font-medium text-bh-muted">If you're already listed—or you add your business—the Business Presence Review can also help improve the information on your MNHalal or MNMuslim listing. Accurate services or food details, hours, contact information, descriptions, and working customer-action links make the listing more useful for people and give search and AI systems clearer information to understand.</p></div>
-          <div className="rounded-3xl border border-bh-hairline bg-bh-card/70 p-8"><h3 className="text-2xl font-bold tracking-[-.03em] text-bh-ink-purple">Become Owner Verified — free</h3><p className="mt-3 leading-[1.65] font-medium text-bh-muted">Owner Verified means important listing information has been confirmed directly with the business owner or an authorized representative. It helps keep your listing accurate and up to date, gives customers more confidence in the information they're seeing, and gives MNHalal or MNMuslim stronger first-party information instead of relying only on what can be found elsewhere online.</p></div>
-          <div className="rounded-3xl border border-bh-hairline bg-bh-card/70 p-8"><h3 className="text-2xl font-bold tracking-[-.03em] text-bh-ink-purple">More visibility when you want it</h3><p className="mt-3 leading-[1.65] font-medium text-bh-muted">Free listings and Owner Verification stay free. Optional paid visibility will include featured directory placement, Instagram promotion, and bundled visibility across the relevant platforms.</p></div>
-        </div>
-        <div className="mt-8 rounded-3xl border border-bh-hairline bg-bh-card/70 p-8 sm:p-10"><Eyebrow>Instagram discovery</Eyebrow><h3 className="mt-5 text-[clamp(27px,3.5vw,40px)] font-bold tracking-[-.04em] text-bh-ink">Reach the communities already looking for what you offer.</h3><p className="mt-4 max-w-[65ch] leading-[1.65] font-medium text-bh-muted">We also use dedicated Instagram pages to help Minnesota businesses reach the communities already looking for what they offer.</p><div className="mt-7 grid gap-5 md:grid-cols-3">
-          <div><Link href="https://www.instagram.com/mnhalalfood/" target="_blank" rel="noopener noreferrer" className="font-bold text-bh-ink-purple no-underline hover:text-bh-orange">@mnhalalfood ↗</Link><p className="mt-2 text-sm leading-[1.6] font-medium text-bh-muted">Helping people discover halal food in Minnesota, while giving local halal food businesses another way to reach customers.</p></div>
-          <div><Link href="https://www.instagram.com/mnmuslimbusinesses/" target="_blank" rel="noopener noreferrer" className="font-bold text-bh-ink-purple no-underline hover:text-bh-orange">@mnmuslimbusinesses ↗</Link><p className="mt-2 text-sm leading-[1.6] font-medium text-bh-muted">Helping people discover Muslim businesses and service providers in Minnesota, while giving those businesses another way to reach the local community.</p></div>
-          <div><Link href="https://www.instagram.com/mnmuslimevents/" target="_blank" rel="noopener noreferrer" className="font-bold text-bh-ink-purple no-underline hover:text-bh-orange">@mnmuslimevents ↗</Link><p className="mt-2 text-sm leading-[1.6] font-medium text-bh-muted">Helping people find Muslim events across Minnesota and giving organizers another way to get their events in front of the community.</p></div>
-        </div></div>
-      </div></section>
+        <Section id="biz-why" innerClassName="grid grid-cols-[repeat(auto-fit,minmax(min(100%,420px),1fr))] items-start gap-[clamp(24px,5vw,72px)]">
+          <div className="flex flex-col gap-4">
+            <Eyebrow>Why I&apos;m working on this</Eyebrow>
+            <h2 className={`${sectionHeading} max-w-[14ch]`}>
+              <AccentText before="Good businesses, " accent="scattered" after=" information." color="orange" />
+            </h2>
+          </div>
+          <div className="flex flex-col gap-[18px] pt-[clamp(0px,3vw,40px)]">
+            <p className={proseText}>
+              Building products like <TextLink href={mnhalal} color="orange">MNHalal</TextLink> and <TextLink href={mnmuslim}>MNMuslim</TextLink> means I spend a lot of time with local business information. I keep seeing the same thing: businesses with genuinely useful services whose information online is incomplete, outdated, or spread across too many places.
+            </p>
+            <p className={proseText}>AI is changing how people discover businesses, but the fundamentals haven&apos;t changed. Your business information still needs to be accurate, clear, accessible, and easy to act on. That&apos;s where I start.</p>
+            <p className={proseText}>
+              For businesses listed on <TextLink href={mnhalal} color="orange">MNHalal</TextLink> or <TextLink href={mnmuslim}>MNMuslim</TextLink>, the review can also help improve the accuracy and usefulness of their directory listing.
+            </p>
+            <div className="flex flex-wrap gap-x-5 gap-y-2.5">
+              {directoryLinks.map((link) => (
+                <TextLink key={link.href} href={link.href} color={link.color} className="pb-0.5 text-[15px]">
+                  {link.label}
+                </TextLink>
+              ))}
+            </div>
+            <div className="mt-1.5 flex flex-col gap-1 rounded-[20px] border border-bh-hairline bg-bh-band/70 p-[clamp(18px,2.4vw,24px)]">
+              <Eyebrow className="text-[11px] tracking-[.2em]">Community discovery</Eyebrow>
+              <p className="my-1.5 text-[15px] leading-[1.55] font-medium text-bh-body">I also run community discovery pages that help Minnesota Muslims find local food, businesses, services, and events.</p>
+              {instagram.map((account) => (
+                <a key={account.handle} href={account.href} {...externalLinkProps(account.href)} className="group flex flex-col gap-[3px] border-t border-[#e0d6c2] py-3 no-underline">
+                  <span className={`flex items-center gap-2 text-base font-bold transition-colors duration-200 group-hover:text-bh-orange ${account.color}`}>
+                    {account.handle}
+                    <span aria-hidden="true" className="font-mono-bh text-xs">↗</span>
+                  </span>
+                  <span className="text-sm leading-[1.5] font-medium text-[#5a544a]">{account.description}</span>
+                </a>
+              ))}
+            </div>
+            <div className="mt-1.5 flex flex-wrap items-center justify-between gap-x-6 gap-y-3 border-t border-bh-hairline pt-[18px]">
+              <Wordmark size="inline" asLink={false} />
+              <MonoTagline className="text-xs tracking-[.14em] text-bh-muted" />
+            </div>
+          </div>
+        </Section>
 
-      <section className="px-6 py-16 text-center sm:px-[52px]"><div className="mx-auto max-w-[760px] rounded-3xl border border-bh-hairline bg-bh-card/70 p-8 sm:p-12"><Eyebrow>Start with the review</Eyebrow><h2 className="mt-5 text-[clamp(30px,4vw,48px)] leading-[1] font-bold tracking-[-.045em] text-bh-ink">Not sure what's wrong with your online presence? That's what the review is for.</h2><p className="mx-auto mt-5 max-w-[55ch] leading-[1.65] font-medium text-bh-muted">I'll look at your public online presence, share the most important things I find, and tell you what I'd recommend fixing. There's no obligation to purchase anything.</p><Link href={reviewUrl} target="_blank" rel="noopener noreferrer" className="mt-7 inline-block rounded-full bg-bh-purple px-7 py-3.5 text-[15px] font-bold text-white no-underline transition-transform duration-200 hover:-translate-y-0.5">Request a Free Business Presence Review</Link></div></section>
+        <Section id="biz-cta" flush="top" innerClassName="flex flex-col items-center gap-[18px] rounded-[32px] bg-bh-ink-purple px-[clamp(24px,6vw,80px)] py-[clamp(36px,6vw,88px)] text-center text-bh-bg">
+          <Eyebrow tone="dark">Free Business Presence Review</Eyebrow>
+          <h2 className="m-0 max-w-[16ch] text-[clamp(32px,5vw,60px)] leading-none font-bold tracking-[-.045em] text-balance">
+            <AccentText before="How well does your business show up " accent="online" after="?" color="orange-light" />
+          </h2>
+          <p className="m-0 max-w-[44ch] text-[clamp(17px,1.6vw,20px)] leading-[1.55] font-medium text-[#d9d1e6]">Start with a free Business Presence Review.</p>
+          <div className="mt-2.5 flex w-full flex-col items-center gap-3">
+            <Button href={reviewUrl} label="Get a Free Business Presence Review" />
+            <span className="text-sm font-medium text-[#c4b9d6]">No obligation to purchase anything.</span>
+          </div>
+        </Section>
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }

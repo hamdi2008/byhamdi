@@ -6,7 +6,7 @@
   --color-ink-purple: #241a33;
   --color-body: #4a453d;
   --color-body-alt: #3f3a32;
-  --color-muted: #7a7264;
+  --color-muted: #6f685b;
   --color-faint: #a99f8c;
   --color-orange: #ff6a3d;
   --color-orange-light: #ff8a5c;
@@ -16,6 +16,9 @@
   --color-hairline: #ece3d0;
   --color-hairline-alt: #e6ddca;
   --color-card: #fffdf7;
+  --color-band: #f3ecdf;
+  --color-cta: #ef5a2b;
+  --color-orange-deep: #c2441a;
 
   --ease-bh: cubic-bezier(0.22, 1, 0.36, 1);
 
@@ -40,6 +43,9 @@
   --color-bh-hairline: var(--color-hairline);
   --color-bh-hairline-alt: var(--color-hairline-alt);
   --color-bh-card: var(--color-card);
+  --color-bh-band: var(--color-band);
+  --color-bh-cta: var(--color-cta);
+  --color-bh-orange-deep: var(--color-orange-deep);
   --ease-bh: var(--ease-bh);
 
   --font-grotesk: var(--font-space-grotesk);
@@ -49,6 +55,14 @@
 
 html {
   scroll-behavior: smooth;
+  /* Keeps in-page anchors clear of the sticky nav. */
+  scroll-padding-top: 73px;
+}
+
+@media (min-width: 900px) {
+  html {
+    scroll-padding-top: 91px;
+  }
 }
 
 body {

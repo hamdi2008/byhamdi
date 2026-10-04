@@ -15,7 +15,14 @@ export const taglineWords = [
 ];
 
 export const contact = { email: "hello@byhamdi.com", ctaLabel: "Contact" };
-export const nav = { contact: { label: "Contact", href: `mailto:${contact.email}` } };
+export const nav = {
+  links: [
+    { label: "Services", href: "/#services" },
+    { label: "Products", href: "/#bh-products" },
+    { label: "About", href: "/#about" },
+  ],
+  contact: { label: "Contact", href: `mailto:${contact.email}` },
+};
 
 export const socials = {
   youtube: "https://www.youtube.com/@hamdimohamud08",
@@ -23,13 +30,6 @@ export const socials = {
   x: "https://x.com/hamdimahmuud",
   linkedin: "https://www.linkedin.com/in/hamdi-hassan-ai/",
 };
-
-export const products = [
-  { label: "Life in Views", href: "https://lifeinviews.com" },
-  { label: "MN Somali", href: "https://www.mnsomalis.com/" },
-  { label: "MNMuslim", href: "https://www.mnmuslim.com/" },
-  { label: "MNHalal", href: "https://www.mnhalal.com/" },
-];
 
 export const footerNav = {
   explore: [
@@ -56,4 +56,4 @@ export const footerNav = {
   ],
 };
 
-export const footer = { copyright: `© ${new Date().getFullYear()} By Hamdi`, madeIn: "Made in Minnesota" };
+export const footer = { description: "Building useful AI-powered products in Minnesota.", copyright: `© ${new Date().getFullYear()} By Hamdi`, madeIn: "Made in Minnesota" };

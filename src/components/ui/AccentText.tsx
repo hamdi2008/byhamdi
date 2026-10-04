@@ -1,4 +1,4 @@
-type AccentColor = "orange" | "purple";
+type AccentColor = "orange" | "purple" | "orange-light";
 
 type AccentTextProps = {
   before?: string;
@@ -10,6 +10,7 @@ type AccentTextProps = {
 const colorClass: Record<AccentColor, string> = {
   orange: "text-bh-orange",
   purple: "text-bh-purple",
+  "orange-light": "text-bh-orange-light",
 };
 
 /** Renders "{before}<i>{accent}</i>{after}" — the recurring italic-serif-accent-word pattern in headings. */

@@ -6,7 +6,7 @@ The homepage for [By Hamdi](https://www.byhamdi.co) — a one-person studio buil
 
 - [Next.js](https://nextjs.org) (App Router, TypeScript)
 - [Tailwind CSS v4](https://tailwindcss.com)
-- [Framer Motion](https://www.framer.com/motion/) for scroll reveals, magnetic hover, and the timeline draw
+- [Framer Motion](https://www.framer.com/motion/) for the hero entrance animation
 - A hand-rolled `<canvas>` constellation field behind every section
 
 ## Getting started
@@ -23,19 +23,18 @@ Open [http://localhost:3000](http://localhost:3000).
 Page copy lives in `src/content/` — edit these instead of hunting through components:
 
 - `src/content/site.ts` — brand, contact info, social links, footer nav
-- `src/content/home.ts` — hero, products, Vibe Coding Help, about, building-in-public sections
+- `src/content/home.ts` — hero, services, products, about, building-in-public sections (plus Vibe Coding Help data used by its API)
 
 ## Project structure
 
 ```
 src/
-  app/                Root layout, homepage, and metadata (icon, OG image, robots, sitemap)
+  app/                Root layout, pages (/, /business, /vibe-coding-help), service APIs, and metadata
   components/
-    sections/          One component per homepage section (Hero, ProductsSection, Footer, ...)
-    products/           Product row, identity marks, vertical thread
-    building/            Building-in-public channel cards
+    sections/          Nav, Footer, and one component per homepage section (Hero, ServicesSection, ...)
+    products/           Product identity marks
     field/               The constellation field canvas
-    ui/                   Shared primitives (buttons, wordmark, reveal wrapper, ...)
+    ui/                   Shared primitives (Section, Button, TextLink, Steps, Tag, wordmark, ...)
   content/               Copy — see above
   lib/                    Small shared helpers
 ```

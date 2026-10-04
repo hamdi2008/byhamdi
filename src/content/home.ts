@@ -1,29 +1,52 @@
 // Homepage copy — source of truth for section content.
-import { taglineWords, products, socials } from "./site";
+import { taglineWords, socials } from "./site";
 
 const googleFormLink = "https://forms.gle/nRzHwcCW9GF7JLrL8";
 
 export const hero = {
   headline: { before: "Building ", accent: "useful", after: " AI-powered products." },
   supporting: taglineWords,
-  primaryCta: { label: "Business Digital & AI Help", href: "/business" },
+  primaryCta: { label: "Digital Presence & AI Help", href: "/business" },
   secondaryCta: { label: "Vibe Coding Help", href: "/vibe-coding-help" },
   recentlyShipped: {
     eyebrow: "Recently shipped",
-    links: products.map((p, i) => ({ label: p.label, href: p.href, accent: (i % 2 === 0 ? "orange" : "purple") as "orange" | "purple" })),
+    links: [
+      { label: "MNHalal", href: "https://www.mnhalal.com/", accent: "purple" as const },
+      { label: "MNMuslim", href: "https://www.mnmuslim.com/", accent: "orange" as const },
+      { label: "Life in Views", href: "https://lifeinviews.com", accent: "orange" as const },
+      { label: "MN Somali", href: "https://www.mnsomalis.com/", accent: "purple" as const },
+    ],
+  },
+};
+
+export const services = {
+  eyebrow: "Services",
+  heading: { before: "Ways I Can ", accent: "Help", after: "." },
+  business: {
+    eyebrow: "For businesses",
+    title: "Digital Presence & AI Readiness",
+    description: "Is your business showing up correctly online? I help businesses fix problems across their website and online presence, improve their search foundation, and prepare for discovery through AI.",
+    cta: { label: "Learn More", href: "/business" },
+    meta: "Start with a free Business Presence Review",
+  },
+  vibe: {
+    eyebrow: "For people building with AI",
+    title: "Vibe Coding Help",
+    description: "Built something with AI and got stuck? Get 1-on-1 help getting your AI-built product working and live.",
+    cta: { label: "Request Help", href: "/vibe-coding-help" },
+    meta: "$99 · 60–90 minutes",
   },
 };
 
 export type ProductId = "lifeinviews" | "mnsomalis" | "mnmuslim" | "mnhalal";
 export const productsSection = {
-  eyebrow: null,
   heading: { before: "Products I've ", accent: "Built", after: "" },
   supporting: "Building useful AI-powered products.",
   items: [
-    { id: "lifeinviews" as ProductId, plainName: "Life in Views", name: { before: "Life in Views", accent: "", after: "" }, description: "A personal operating system for organizing your priorities, tracking what matters, and reflecting on your progress.", href: "https://lifeinviews.com", accent: "purple" as const, medallionTint: "purple" as const, side: "left" as const, flagship: false },
-    { id: "mnsomalis" as ProductId, plainName: "MN Somali", name: { before: "MN Somali", accent: "", after: "" }, description: "Discover data, context, and sourced information about Minnesota’s Somali community.", href: "https://www.mnsomalis.com/", accent: "purple" as const, medallionTint: "purple" as const, side: "right" as const, flagship: false },
-    { id: "mnmuslim" as ProductId, plainName: "MNMuslim", name: { before: "MNMuslim", accent: "", after: "" }, description: "Discover Muslim services, halal food, businesses, and community resources.", href: "https://www.mnmuslim.com/", accent: "orange" as const, medallionTint: "purple" as const, side: "left" as const, flagship: true },
-    { id: "mnhalal" as ProductId, plainName: "MNHalal", name: { before: "MNHalal", accent: "", after: "" }, description: "Discover halal restaurants, cafés, bakeries, and markets across Minnesota.", href: "https://www.mnhalal.com/", accent: "orange" as const, medallionTint: "orange" as const, side: "right" as const, flagship: false },
+    { id: "mnhalal" as ProductId, name: "MNHalal", description: "Discover halal restaurants, markets, caterers, food businesses, and more across Minnesota.", href: "https://www.mnhalal.com/", accent: "orange" as const, medallionTint: "orange" as const },
+    { id: "mnmuslim" as ProductId, name: "MNMuslim", description: "Discover Muslim businesses, services, organizations, events, and community resources across Minnesota.", href: "https://www.mnmuslim.com/", accent: "orange" as const, medallionTint: "purple" as const },
+    { id: "lifeinviews" as ProductId, name: "Life in Views", description: "A personal operating system for organizing your priorities, tracking what matters, and reflecting on your progress.", href: "https://lifeinviews.com", accent: "purple" as const, medallionTint: "purple" as const },
+    { id: "mnsomalis" as ProductId, name: "MN Somali", description: "Discover data, context, and sourced information about Minnesota’s Somali community.", href: "https://www.mnsomalis.com/", accent: "purple" as const, medallionTint: "purple" as const },
   ],
 };
 
