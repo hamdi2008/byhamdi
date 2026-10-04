@@ -2,31 +2,33 @@
   "openapi": "3.1.0",
   "info": {
     "title": "By Hamdi Public Services API",
-    "version": "1.0.0",
-    "description": "Public, read-only structured information about services offered by By Hamdi."
+    "version": "2.0.0",
+    "description": "Public, read-only structured information about services offered by By Hamdi. Version 2.0.0 changes the Vibe Coding Help response shape: `canHelpWith` is replaced by `commonBlockers`, and `process` items are objects ({ step, name, description }) instead of strings."
   },
-  "servers": [
-    {
-      "url": "https://byhamdi.com",
-      "description": "Production"
-    }
-  ],
+  "servers": [{ "url": "https://byhamdi.com", "description": "Production" }],
   "paths": {
     "/api/v1/services/vibe-coding-help": {
       "get": {
         "operationId": "getVibeCodingHelp",
         "summary": "Get Vibe Coding Help Session details",
-        "description": "Returns current public information about By Hamdi's Vibe Coding Help Session, including provider, audience, price, duration, common blockers, request process, and canonical service URL.",
+        "description": "Returns current public information about By Hamdi's 1-on-1 Vibe Coding Help Session ($99, 60–90 minutes), including who it's a good fit for, common blockers, the three-step request → review → work-together process, scope, the request form URL, and the canonical service URL. Submitting the request form does not book a session or charge the user.",
         "responses": {
           "200": {
             "description": "Current Vibe Coding Help Session details",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VibeCodingHelpService"
-                }
-              }
-            }
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/VibeCodingHelpService" } } }
+          }
+        }
+      }
+    },
+    "/api/v1/services/digital-presence-ai-readiness": {
+      "get": {
+        "operationId": "getDigitalPresenceAIReadiness",
+        "summary": "Get Digital Presence & AI Readiness service details",
+        "description": "Returns current public information about By Hamdi's Digital Presence & AI Readiness service, including the free Business Presence Review and its form URL, the five review areas, the four-step process (free review, findings, and priorities; optional paid fix quoted separately), pricing model, related MNHalal/MNMuslim directories, and canonical service URL.",
+        "responses": {
+          "200": {
+            "description": "Current Digital Presence & AI Readiness service details",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/DigitalPresenceAIReadinessService" } } }
           }
         }
       }
@@ -34,56 +36,105 @@
   },
   "components": {
     "schemas": {
+      "Provider": {
+        "type": "object",
+        "required": ["name", "brand", "website"],
+        "properties": {
+          "name": { "type": "string", "examples": ["Hamdi Mohamud Hassan"] },
+          "brand": { "type": "string", "examples": ["By Hamdi"] },
+          "website": { "type": "string", "format": "uri" }
+        }
+      },
+      "NamedText": {
+        "type": "object",
+        "required": ["name", "description"],
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" }
+        }
+      },
       "VibeCodingHelpService": {
         "type": "object",
-        "required": [
-          "id",
-          "name",
-          "provider",
-          "description",
-          "audience",
-          "format",
-          "price",
-          "duration",
-          "canHelpWith",
-          "process",
-          "request",
-          "canonicalUrl"
-        ],
+        "required": ["id", "name", "provider", "description", "summary", "audience", "goodFitIf", "format", "price", "duration", "commonBlockers", "process", "scope", "request", "canonicalUrl"],
         "properties": {
-          "id": {
-            "type": "string",
-            "const": "vibe-coding-help"
-          },
-          "name": {
-            "type": "string",
-            "examples": ["Vibe Coding Help Session"]
-          },
-          "provider": {
-            "type": "object",
-            "required": ["name", "brand", "website"],
-            "properties": {
-              "name": { "type": "string" },
-              "brand": { "type": "string" },
-              "website": { "type": "string", "format": "uri" }
-            }
-          },
+          "id": { "type": "string", "const": "vibe-coding-help" },
+          "name": { "type": "string", "examples": ["Vibe Coding Help Session"] },
+          "provider": { "$ref": "#/components/schemas/Provider" },
           "description": { "type": "string" },
+          "summary": { "type": "string", "description": "The page's short pitch." },
           "audience": { "type": "string" },
-          "format": { "type": "string" },
+          "goodFitIf": {
+            "type": "array",
+            "description": "Statements describing who the session is a good fit for.",
+            "items": { "type": "string" }
+          },
+          "format": { "type": "string", "examples": ["1-on-1 session with Hamdi, online"] },
           "price": {
             "type": "object",
-            "required": ["amount", "currency"],
+            "required": ["amount", "currency", "unit"],
             "properties": {
               "amount": { "type": "number", "examples": [99] },
-              "currency": { "type": "string", "examples": ["USD"] }
+              "currency": { "type": "string", "examples": ["USD"] },
+              "unit": { "type": "string", "examples": ["per session"] }
             }
           },
-          "duration": {
-            "type": "string",
-            "examples": ["60–90 minutes"]
+          "duration": { "type": "string", "examples": ["60–90 minutes"] },
+          "commonBlockers": {
+            "type": "array",
+            "description": "Examples of blockers people bring to a session. Replaces `canHelpWith` from version 1.",
+            "items": { "type": "string" },
+            "examples": [["I don't know what to do next", "Deployment", "Authentication"]]
           },
-          "canHelpWith": {
+          "process": {
+            "type": "array",
+            "description": "Ordered steps: request, review for fit, then the session.",
+            "items": {
+              "type": "object",
+              "required": ["step", "name", "description"],
+              "properties": {
+                "step": { "type": "integer", "minimum": 1 },
+                "name": { "type": "string" },
+                "description": { "type": "string" }
+              }
+            }
+          },
+          "scope": {
+            "type": "object",
+            "required": ["is", "isNot", "note"],
+            "properties": {
+              "is": { "type": "string" },
+              "isNot": { "type": "string" },
+              "note": { "type": "string" }
+            }
+          },
+          "request": {
+            "type": "object",
+            "required": ["url", "label", "note"],
+            "properties": {
+              "url": { "type": "string", "format": "uri", "description": "Request form. Submitting it does not book a session or charge the user." },
+              "label": { "type": "string" },
+              "note": { "type": "string" }
+            }
+          },
+          "canonicalUrl": { "type": "string", "format": "uri", "examples": ["https://byhamdi.com/vibe-coding-help"] }
+        }
+      },
+      "DigitalPresenceAIReadinessService": {
+        "type": "object",
+        "required": ["id", "name", "provider", "description", "audience", "coreQuestion", "goals", "commonProblems", "review", "process", "commitment", "pricing", "relatedDirectories", "canonicalUrl"],
+        "properties": {
+          "id": { "type": "string", "const": "digital-presence-ai-readiness" },
+          "name": { "type": "string", "examples": ["Digital Presence & AI Readiness"] },
+          "provider": { "$ref": "#/components/schemas/Provider" },
+          "description": { "type": "string" },
+          "audience": { "type": "string" },
+          "coreQuestion": { "type": "string" },
+          "goals": {
+            "type": "array",
+            "description": "Find, Understand, Act.",
+            "items": { "$ref": "#/components/schemas/NamedText" }
+          },
+          "commonProblems": {
             "type": "array",
             "items": {
               "type": "object",
@@ -94,24 +145,99 @@
               }
             }
           },
-          "process": {
-            "type": "array",
-            "items": { "type": "string" }
-          },
-          "request": {
+          "review": {
             "type": "object",
-            "required": ["url", "label", "note"],
+            "description": "The free Business Presence Review.",
+            "required": ["name", "price", "currency", "url", "areas", "answers", "note"],
             "properties": {
-              "url": { "type": "string", "format": "uri" },
-              "label": { "type": "string" },
+              "name": { "type": "string", "examples": ["Free Business Presence Review"] },
+              "price": { "type": "number", "const": 0 },
+              "currency": { "type": "string", "examples": ["USD"] },
+              "url": { "type": "string", "format": "uri", "description": "Review request form." },
+              "areas": {
+                "type": "array",
+                "description": "The five areas reviewed.",
+                "items": {
+                  "type": "object",
+                  "required": ["name", "question"],
+                  "properties": {
+                    "name": { "type": "string" },
+                    "question": { "type": "string" }
+                  }
+                }
+              },
+              "answers": {
+                "type": "array",
+                "description": "Questions the review helps answer.",
+                "items": { "type": "string" }
+              },
               "note": { "type": "string" }
             }
           },
-          "canonicalUrl": {
-            "type": "string",
-            "format": "uri",
-            "examples": ["https://byhamdi.com/vibe-coding-help"]
-          }
+          "process": {
+            "type": "array",
+            "description": "Review, Findings, and Priorities are free; Fix is optional paid work quoted separately.",
+            "items": {
+              "type": "object",
+              "required": ["step", "name", "description", "cost"],
+              "properties": {
+                "step": { "type": "integer", "minimum": 1 },
+                "name": { "type": "string" },
+                "description": { "type": "string" },
+                "cost": { "type": "string", "examples": ["Free"] }
+              }
+            }
+          },
+          "commitment": { "type": "string" },
+          "pricing": {
+            "type": "object",
+            "required": ["model", "note"],
+            "properties": {
+              "model": { "type": "string" },
+              "note": { "type": "string" }
+            }
+          },
+          "relatedDirectories": {
+            "type": "object",
+            "description": "Supporting context: Hamdi's Minnesota directories and community discovery pages.",
+            "required": ["note", "directories", "communityDiscovery"],
+            "properties": {
+              "note": { "type": "string" },
+              "directories": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["name", "url", "submitUrl", "description"],
+                  "properties": {
+                    "name": { "type": "string" },
+                    "url": { "type": "string", "format": "uri" },
+                    "submitUrl": { "type": "string", "format": "uri" },
+                    "description": { "type": "string" }
+                  }
+                }
+              },
+              "communityDiscovery": {
+                "type": "object",
+                "required": ["note", "instagram"],
+                "properties": {
+                  "note": { "type": "string" },
+                  "instagram": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": ["handle", "url", "description"],
+                      "properties": {
+                        "handle": { "type": "string" },
+                        "url": { "type": "string", "format": "uri" },
+                        "description": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "canonicalUrl": { "type": "string", "format": "uri", "examples": ["https://byhamdi.com/business"] }
         }
       }
     }

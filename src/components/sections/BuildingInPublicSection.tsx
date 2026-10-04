@@ -1,59 +1,43 @@
+import Link from "next/link";
 import AccentText from "@/components/ui/AccentText";
-import Reveal from "@/components/ui/Reveal";
 import Eyebrow from "@/components/ui/Eyebrow";
-import ChannelCard from "@/components/building/ChannelCard";
-import { IconYouTube, IconGitHub, IconX } from "@/components/icons/ChannelIcons";
+import Section from "@/components/ui/Section";
 import { buildingInPublic } from "@/content/home";
-import type { ReactNode } from "react";
+import { externalLinkProps } from "@/lib/links";
 
-const icons: Record<(typeof buildingInPublic.channels)[number]["id"], ReactNode> = {
-  youtube: <IconYouTube />,
-  github: <IconGitHub />,
-  x: <IconX />,
+const accent = {
+  orange: { action: "text-bh-orange-deep", hover: "hover:border-bh-orange" },
+  purple: { action: "text-bh-purple", hover: "hover:border-bh-purple" },
 };
 
 export default function BuildingInPublicSection() {
   return (
-    <section
-      id="building"
-      className="relative z-[1] overflow-hidden px-6 pt-[70px] pb-[90px] font-grotesk text-bh-ink sm:px-[52px]"
-    >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(to_bottom,rgba(250,246,238,.6),rgba(250,246,238,.34)_40%,rgba(250,246,238,.34)_62%,rgba(250,246,238,.58))]"
-      />
-
-      <div className="relative z-[1] mx-auto grid max-w-[1180px] grid-cols-[.92fr_1.08fr] items-start gap-[66px] max-[860px]:grid-cols-1 max-[860px]:gap-10">
-        <Reveal className="sticky top-[60px] max-[860px]:static">
+    <Section id="building" flush="top" innerClassName="flex flex-col gap-[clamp(24px,3vw,40px)] border-t border-bh-hairline pt-[clamp(48px,6vw,80px)]">
+      <div className="flex flex-wrap items-end justify-between gap-x-[60px] gap-y-4">
+        <div className="flex flex-col gap-4">
           <Eyebrow>{buildingInPublic.eyebrow}</Eyebrow>
-          <h2 className="mt-4 text-[clamp(34px,4.2vw,62px)] leading-[.96] font-bold tracking-[-.05em]">
-            <AccentText before={buildingInPublic.heading.before} accent={buildingInPublic.heading.accent} after={buildingInPublic.heading.after} color="purple" />
+          <h2 className="m-0 text-[clamp(34px,4.6vw,58px)] leading-[.96] font-bold tracking-[-.05em]">
+            <AccentText {...buildingInPublic.heading} color="purple" />
           </h2>
-          <p className="mt-[22px] max-w-[36ch] text-[clamp(17px,1.4vw,21px)] leading-[1.5] font-medium text-bh-body">
-            {buildingInPublic.body}
-          </p>
-        </Reveal>
-
-        <Reveal delay={120} className="grid grid-cols-2 gap-3.5 max-[860px]:grid-cols-1">
-          {buildingInPublic.channels.map((channel, i) => {
-            const isDanglingLast =
-              i === buildingInPublic.channels.length - 1 && buildingInPublic.channels.length % 2 !== 0;
-            return (
-              <ChannelCard
-                key={channel.id}
-                href={channel.href}
-                icon={icons[channel.id]}
-                name={channel.name}
-                description={channel.description}
-                actionLabel={channel.actionLabel}
-                arrow={channel.arrow}
-                accent={channel.accent}
-                className={isDanglingLast ? "col-span-2 max-[860px]:col-span-1" : undefined}
-              />
-            );
-          })}
-        </Reveal>
+        </div>
+        <p className="m-0 max-w-[44ch] text-[17px] leading-[1.55] font-medium text-bh-body">{buildingInPublic.body}</p>
       </div>
-    </section>
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,280px),1fr))] gap-3.5">
+        {buildingInPublic.channels.map((channel) => (
+          <Link
+            key={channel.id}
+            href={channel.href}
+            {...externalLinkProps(channel.href)}
+            className={`flex flex-col gap-2.5 rounded-[22px] border border-bh-hairline bg-bh-card p-6 text-bh-ink no-underline transition-colors duration-200 ${accent[channel.accent].hover}`}
+          >
+            <b className="text-xl tracking-[-.02em]">{channel.name}</b>
+            <span className="text-[15px] leading-[1.55] font-medium text-bh-body">{channel.description}</span>
+            <span className={`mt-1.5 text-sm font-bold ${accent[channel.accent].action}`}>
+              {channel.actionLabel} {channel.arrow}
+            </span>
+          </Link>
+        ))}
+      </div>
+    </Section>
   );
 }
