@@ -18,7 +18,7 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative z-[1] flex flex-col items-center bg-[radial-gradient(52%_60%_at_50%_45%,rgba(250,246,238,.95),rgba(250,246,238,0)_75%)] px-[clamp(20px,4vw,52px)] pt-[clamp(56px,10vw,128px)] pb-[clamp(40px,5vw,64px)] text-center font-grotesk text-bh-ink"
+      className="relative z-[1] flex flex-col items-center bg-[radial-gradient(52%_60%_at_50%_45%,rgba(250,246,238,.95),rgba(250,246,238,0)_75%)] px-[clamp(20px,4vw,52px)] pt-[clamp(56px,10vw,128px)] pb-[clamp(40px,5vw,64px)] max-[900px]:pb-2 text-center font-grotesk text-bh-ink"
     >
       <motion.h1 initial="hidden" animate="visible" variants={item(0)} className="m-0 max-w-[15ch] text-[clamp(46px,8.4vw,112px)] leading-[.92] font-bold tracking-[-.05em] text-balance">
         <AccentText before={hero.headline.before} accent={hero.headline.accent} after={hero.headline.after} color="orange" />

@@ -10,7 +10,7 @@ const cardBody = "m-0 text-[17px] leading-[1.65] font-medium";
 export default function ServicesSection() {
   const { business, vibe } = services;
   return (
-    <Section id="services" innerClassName="flex flex-col gap-[clamp(28px,3.5vw,44px)]">
+    <Section id="services" className="max-[900px]:pt-12" innerClassName="flex flex-col gap-[clamp(28px,3.5vw,44px)]">
       <div className="flex flex-col gap-4">
         <Eyebrow>{services.eyebrow}</Eyebrow>
         <h2 className="m-0 text-[clamp(36px,5vw,62px)] leading-[.96] font-bold tracking-[-.05em]">

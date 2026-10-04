@@ -34,7 +34,7 @@ const processSteps: Step[] = process.map((step) => ({
 const pad = (i: number) => String(i + 1).padStart(2, "0");
 const bodyText = "m-0 text-[17px] leading-[1.65] font-medium text-bh-body";
 const proseText = "m-0 text-[clamp(16px,1.4vw,19px)] leading-[1.65] font-medium text-bh-body";
-const note = "m-0 text-sm leading-[1.55] font-medium text-bh-muted";
+const note = "m-0 text-sm max-sm:text-[15px] leading-[1.55] font-medium text-bh-muted";
 const formCta = "self-start max-sm:self-stretch";
 const splitHeader = "grid grid-cols-[repeat(auto-fit,minmax(min(100%,420px),1fr))] items-end gap-x-16 gap-y-4";
 
@@ -77,7 +77,7 @@ export default function BusinessPage() {
                     <span className="font-mono-bh pt-[5px] text-xs text-bh-orange-light">{pad(i)}</span>
                     <b className="text-[19px] tracking-[-.02em]">{title}</b>
                     <span />
-                    <span className="text-[15px] leading-[1.5] font-medium text-[#d9d1e6]">{description}</span>
+                    <span className="text-[15px] max-sm:text-base leading-[1.5] font-medium text-[#d9d1e6]">{description}</span>
                   </li>
                 ))}
               </ol>
@@ -101,7 +101,7 @@ export default function BusinessPage() {
                 <span aria-hidden="true" className={`mt-[9px] h-2 w-2 rounded-full ${i % 2 === 0 ? "bg-bh-orange" : "bg-bh-purple"}`} />
                 <h3 className="m-0 text-[19px] leading-[1.3] font-bold tracking-[-.02em] text-bh-ink-purple">{title}</h3>
                 <span />
-                <p className="m-0 text-[15.5px] leading-[1.6] font-medium text-[#5a544a]">{description}</p>
+                <p className="m-0 text-[15.5px] max-sm:text-base leading-[1.6] font-medium text-[#5a544a]">{description}</p>
               </div>
             ))}
           </div>
@@ -132,7 +132,7 @@ export default function BusinessPage() {
                       <span className={`font-mono-bh text-xs min-[900px]:mt-2 ${purple ? "text-bh-purple" : "text-bh-orange"}`}>{pad(i)}</span>
                       <h3 className="m-0 text-[22px] font-bold tracking-[-.025em] text-bh-ink-purple max-[900px]:text-[21px]">{title}</h3>
                     </div>
-                    <p className="m-0 text-[15.5px] leading-[1.55] font-medium text-[#5a544a]">{description}</p>
+                    <p className="m-0 text-[15.5px] max-sm:text-base leading-[1.55] font-medium text-[#5a544a]">{description}</p>
                   </li>
                 );
               })}
@@ -201,14 +201,14 @@ export default function BusinessPage() {
             </div>
             <div className="mt-1.5 flex flex-col gap-1 rounded-[20px] border border-bh-hairline bg-bh-band/70 p-[clamp(18px,2.4vw,24px)]">
               <Eyebrow className="text-[11px] tracking-[.2em]">Community discovery</Eyebrow>
-              <p className="my-1.5 text-[15px] leading-[1.55] font-medium text-bh-body">{notes.communityDiscovery}</p>
+              <p className="my-1.5 text-[15px] max-sm:text-base leading-[1.55] font-medium text-bh-body">{notes.communityDiscovery}</p>
               {instagram.map((account, i) => (
                 <a key={account.handle} href={account.url} {...externalLinkProps(account.url)} className="group flex flex-col gap-[3px] border-t border-[#e0d6c2] py-3 no-underline">
                   <span className={`flex items-center gap-2 text-base font-bold transition-colors duration-200 group-hover:text-bh-orange ${i === 0 ? "text-bh-orange-deep" : "text-bh-purple"}`}>
                     {account.handle}
                     <span aria-hidden="true" className="font-mono-bh text-xs">↗</span>
                   </span>
-                  <span className="text-sm leading-[1.5] font-medium text-[#5a544a]">{account.description}</span>
+                  <span className="text-sm max-sm:text-[15px] leading-[1.5] font-medium text-[#5a544a]">{account.description}</span>
                 </a>
               ))}
             </div>
@@ -227,7 +227,7 @@ export default function BusinessPage() {
           <p className="m-0 max-w-[44ch] text-[clamp(17px,1.6vw,20px)] leading-[1.55] font-medium text-[#d9d1e6]">Start with a free Business Presence Review.</p>
           <div className="mt-2.5 flex w-full flex-col items-center gap-3">
             <Button href={reviewUrl} label="Get a Free Business Presence Review" />
-            <span className="text-sm font-medium text-[#c4b9d6]">No obligation to purchase anything.</span>
+            <span className="text-sm max-sm:text-[15px] font-medium text-[#c4b9d6]">No obligation to purchase anything.</span>
           </div>
         </Section>
       </main>

@@ -113,7 +113,7 @@ export default function VibeCodingHelpPage() {
               </dl>
               <div className="mt-1.5 flex flex-col gap-3">
                 <Button href={requestUrl} label={vibeService.requestLabel} size="xl" className="self-start max-sm:self-stretch" />
-                <p className="m-0 max-w-[44ch] text-sm leading-[1.55] font-medium text-bh-muted">{notes.request}</p>
+                <p className="m-0 max-w-[44ch] text-sm max-sm:text-[15px] leading-[1.55] font-medium text-bh-muted">{notes.request}</p>
               </div>
             </div>
             {/* Illustrative preview of what the request form asks — not a live form. */}
@@ -128,7 +128,7 @@ export default function VibeCodingHelpPage() {
                   <div className="min-h-[46px] rounded-xl border-[1.5px] border-dashed border-[#ddd3bf] bg-bh-bg px-3.5 py-3 text-[14.5px] leading-[1.45] font-medium text-[#8a8274]">{example}</div>
                 </div>
               ))}
-              <p className="m-0 border-t border-bh-hairline pt-3.5 text-sm leading-[1.5] font-medium text-[#5a544a]">I read every request before anything is scheduled.</p>
+              <p className="m-0 border-t border-bh-hairline pt-3.5 text-sm max-sm:text-[15px] leading-[1.5] font-medium text-[#5a544a]">I read every request before anything is scheduled.</p>
             </div>
           </div>
         </section>
@@ -181,7 +181,7 @@ export default function VibeCodingHelpPage() {
             </h2>
           </div>
           <Steps steps={howItWorks} />
-          <p className="m-0 max-w-[70ch] text-[15px] leading-[1.6] font-medium text-[#5a544a]">{notes.session}</p>
+          <p className="m-0 max-w-[70ch] text-[15px] max-sm:text-base leading-[1.6] font-medium text-[#5a544a]">{notes.session}</p>
         </Section>
 
         <Section id="vibe-scope" flush="top" innerClassName="grid grid-cols-[repeat(auto-fit,minmax(min(100%,380px),1fr))] gap-3.5">
@@ -225,7 +225,7 @@ export default function VibeCodingHelpPage() {
           <span className="text-lg font-bold">$99 · 60–90 minutes</span>
           <div className="mt-2 flex w-full flex-col items-center gap-3">
             <Button href={requestUrl} label={vibeService.requestLabel} size="xl" />
-            <p className="m-0 max-w-[44ch] text-sm leading-[1.55] font-medium text-[#c4b9d6]">{notes.request}</p>
+            <p className="m-0 max-w-[44ch] text-sm max-sm:text-[15px] leading-[1.55] font-medium text-[#c4b9d6]">{notes.request}</p>
           </div>
         </Section>
       </main>
