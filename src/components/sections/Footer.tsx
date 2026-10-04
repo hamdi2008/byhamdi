@@ -8,7 +8,8 @@ export default function Footer() {
   return (
     <footer id="contact" className="relative z-[1] border-t border-bh-hairline-alt bg-bh-band px-[clamp(20px,4vw,52px)] pt-[clamp(48px,6vw,72px)] pb-8 font-grotesk text-bh-ink">
       <div className="mx-auto flex max-w-[1180px] flex-col gap-10">
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,150px),1fr))] gap-x-7 gap-y-8">
+        {/* Two columns on mobile; from md the four link columns spread edge to edge. */}
+        <div className="grid grid-cols-2 gap-x-7 gap-y-8 md:grid-cols-[repeat(4,auto)] md:justify-between">
           <div className="col-span-full flex flex-wrap items-end justify-between gap-x-10 gap-y-4 border-b border-bh-hairline-alt pb-8">
             <div className="flex flex-col gap-3">
               <Wordmark size="footer" />
