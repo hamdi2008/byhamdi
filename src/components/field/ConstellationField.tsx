@@ -47,6 +47,9 @@ export default function ConstellationField() {
     let W = 0;
     let H = 0;
     let raf = 0;
+    // Reduced motion: render one static frame (no drift, twinkle, intro, or cursor glow) and redraw only on resize.
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let reduced = motionQuery.matches;
 
     const build = () => {
       const DPR = Math.min(window.devicePixelRatio || 1, 2);
@@ -96,16 +99,16 @@ export default function ConstellationField() {
     const idx = (c: number, r: number) => r * cols + c;
 
     const draw = () => {
-      const t = (performance.now() - start) / 1000;
+      const t = reduced ? 0 : (performance.now() - start) / 1000;
       const R = fieldConfig.focusRadius;
       const amp = cell * fieldConfig.motionAmplitude;
       ctx.clearRect(0, 0, W, H);
 
-      let mx = mouse.x;
-      let my = mouse.y;
+      let mx = reduced ? -9999 : mouse.x;
+      let my = reduced ? -9999 : mouse.y;
       let radius = R;
       const introDur = fieldConfig.introDuration;
-      if (!mouse.moved && t < introDur) {
+      if (!reduced && !mouse.moved && t < introDur) {
         const p = t / introDur;
         mx = W * 0.5;
         my = H * 0.5;
@@ -191,7 +194,7 @@ export default function ConstellationField() {
         }
       }
 
-      raf = requestAnimationFrame(draw);
+      if (!reduced) raf = requestAnimationFrame(draw);
     };
 
     const onMouseMove = (e: MouseEvent) => {
@@ -199,20 +202,32 @@ export default function ConstellationField() {
       mouse.y = e.clientY;
       mouse.moved = true;
     };
-    const onResize = () => build();
+    const onResize = () => {
+      build();
+      if (reduced) draw();
+    };
+    const onMotionChange = () => {
+      reduced = motionQuery.matches;
+      cancelAnimationFrame(raf);
+      if (reduced) draw();
+      else raf = requestAnimationFrame(draw);
+    };
 
     window.addEventListener("mousemove", onMouseMove);
     window.addEventListener("resize", onResize);
+    motionQuery.addEventListener("change", onMotionChange);
 
     build();
     glow.x = W / 2;
     glow.y = H / 2;
-    raf = requestAnimationFrame(draw);
+    if (reduced) draw();
+    else raf = requestAnimationFrame(draw);
 
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("resize", onResize);
+      motionQuery.removeEventListener("change", onMotionChange);
     };
   }, []);
 

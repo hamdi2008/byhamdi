@@ -1,19 +1,26 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Wordmark from "@/components/ui/Wordmark";
 import { nav } from "@/content/site";
 
 /** Sticky site nav. Inline links at ≥900px; a "Menu" sheet below that. */
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
   const close = () => setOpen(false);
 
-  // Menu links close the sheet on click (and each page mounts its own Nav); Escape closes it too.
+  // Menu links close the sheet on click (and each page mounts its own Nav). Escape closes it too,
+  // returning focus to the Menu button if it was inside the sheet so it isn't lost when the sheet unmounts.
   useEffect(() => {
     if (!open) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && close();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      if (menuRef.current?.contains(document.activeElement)) buttonRef.current?.focus();
+      close();
+    };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
@@ -41,6 +48,7 @@ export default function Nav() {
         <div className="flex items-center justify-between px-5 py-3.5">
           <Wordmark size="navMobile" />
           <button
+            ref={buttonRef}
             type="button"
             aria-expanded={open}
             aria-controls="mobile-menu"
@@ -51,7 +59,7 @@ export default function Nav() {
           </button>
         </div>
         {open && (
-          <div id="mobile-menu" className="flex flex-col border-t border-bh-hairline px-5 pt-1 pb-[18px]">
+          <div id="mobile-menu" ref={menuRef} className="flex flex-col border-t border-bh-hairline px-5 pt-1 pb-[18px]">
             {nav.links.map((link) => (
               <Link key={link.href} href={link.href} onClick={close} className="flex min-h-[52px] items-center justify-between border-b border-bh-hairline text-lg font-semibold text-bh-ink-purple no-underline">
                 {link.label}
