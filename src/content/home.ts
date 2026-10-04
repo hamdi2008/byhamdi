@@ -1,8 +1,6 @@
 // Homepage copy — source of truth for section content.
 import { taglineWords, socials } from "./site";
 
-const googleFormLink = "https://forms.gle/nRzHwcCW9GF7JLrL8";
-
 export const hero = {
   headline: { before: "Building ", accent: "useful", after: " AI-powered products." },
   supporting: taglineWords,
@@ -48,19 +46,6 @@ export const productsSection = {
     { id: "lifeinviews" as ProductId, name: "Life in Views", description: "A personal operating system for organizing your priorities, tracking what matters, and reflecting on your progress.", href: "https://lifeinviews.com", accent: "purple" as const, medallionTint: "purple" as const },
     { id: "mnsomalis" as ProductId, name: "MN Somali", description: "Discover data, context, and sourced information about Minnesota’s Somali community.", href: "https://www.mnsomalis.com/", accent: "purple" as const, medallionTint: "purple" as const },
   ],
-};
-
-export const vibeCodingHelp = {
-  heading: { before: "Vibe Coding Help ", accent: "Session", after: "." }, intro: "Built something with AI but stuck on what comes next?",
-  body: ["If you've already started building with Claude, ChatGPT, Cursor, or another AI tool and reached a point where you're not sure what to do next, bring your project and your blocker.", "I'll review what you send before we meet to make sure it's something I can help with. If it is, we'll spend 60–90 minutes working through your specific blocker and toward a solution together."],
-  price: { amount: "$99", duration: "60–90 minutes" }, panelEyebrow: "You might be stuck on",
-  checklist: [
-    { title: "Getting your prototype out of the AI tool", description: "You've built something, but don't know how to take it further.", accent: "orange" as const },
-    { title: "Getting your product live", description: "You're trying to deploy or share what you've built outside the tool.", accent: "purple" as const },
-    { title: "Making something actually work", description: "A feature, connection, setup, or error is stopping you from moving forward.", accent: "orange" as const },
-    { title: "Figuring out what comes next", description: "You don't know what your product still needs, what can wait, or what you should tackle next.", accent: "purple" as const },
-  ],
-  cta: { label: "Request Help", href: googleFormLink }, helperText: "Tell me about your project first. You won't be charged or booked when submitting a request.",
 };
 
 export const about = {

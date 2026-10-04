@@ -1,41 +1,35 @@
 import { NextResponse } from "next/server";
-import { vibeCodingHelp } from "@/content/home";
-
-const serviceUrl = "https://byhamdi.com/vibe-coding-help";
+import { blockers, featuredBlocker, fit, howItWorks, intro, notes, scope, vibeService } from "@/content/vibe";
 
 export function GET() {
   return NextResponse.json({
     id: "vibe-coding-help",
-    name: "Vibe Coding Help Session",
+    name: vibeService.name,
     provider: {
       name: "Hamdi Mohamud Hassan",
       brand: "By Hamdi",
       website: "https://byhamdi.com",
     },
-    description:
-      "Hands-on help for people who have already started building with AI and are stuck on a specific product blocker.",
+    description: vibeService.description,
+    summary: `${intro.question} ${intro.body}`,
     audience:
-      "People building with Claude, ChatGPT, Cursor, or another AI tool who need help getting their product unstuck.",
-    format: "1-on-1 remote session",
+      "People who have already started building something with AI tools like Claude, ChatGPT, or Cursor and have hit a specific blocker. You don't need to call yourself a developer.",
+    goodFitIf: fit,
+    format: vibeService.format,
     price: {
-      amount: 99,
-      currency: "USD",
+      amount: vibeService.price.amount,
+      currency: vibeService.price.currency,
+      unit: vibeService.price.unit,
     },
-    duration: vibeCodingHelp.price.duration,
-    canHelpWith: vibeCodingHelp.checklist.map((item) => ({
-      title: item.title,
-      description: item.description,
-    })),
-    process: [
-      "Tell me what you built, the tools you used, and the specific problem blocking you.",
-      "I review the request to make sure the problem is a good fit before scheduling anything.",
-      "If it is a fit, we spend 60–90 minutes working toward a practical solution together.",
-    ],
+    duration: vibeService.duration,
+    commonBlockers: [featuredBlocker, ...blockers],
+    process: howItWorks.map((step, i) => ({ step: i + 1, name: step.title, description: step.body })),
+    scope: { is: scope.is, isNot: scope.isNot, note: notes.session },
     request: {
-      url: vibeCodingHelp.cta.href,
-      label: vibeCodingHelp.cta.label,
-      note: "Submitting a request does not charge or book the client.",
+      url: vibeService.requestUrl,
+      label: vibeService.requestLabel,
+      note: "Submitting a request doesn't book a session or charge you. Hamdi reviews every request for fit before anything is scheduled.",
     },
-    canonicalUrl: serviceUrl,
+    canonicalUrl: vibeService.url,
   });
 }

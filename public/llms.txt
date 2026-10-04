@@ -18,31 +18,68 @@ Profiles:
 
 ### Digital Presence & AI Readiness
 
-By Hamdi helps businesses clean up and improve their online presence and prepare for discovery by customers, search engines, and AI assistants. The work can include digital information cleanup, website fixes, search and SEO foundations, business/person identity and trust signals, customer action paths such as ordering or booking, structured information, and AI/agent readiness.
+By Hamdi helps businesses make sure the information about them online is accurate, clear, and easy to act on. That matters for customers, search engines, and the AI tools people increasingly use to discover businesses. The core question: can people, and the systems they use, find, understand, and act on accurate information about the business?
 
-The process begins with a free Business Presence Review. Hamdi reviews the business's public online presence, shares the most important findings, and, when there is implementation work she can help with, recommends a scope and provides a quote before any paid work begins. There is no obligation to purchase paid work.
+- Find: show up when someone looks for what the business offers.
+- Understand: make it clear what the business does, where, and when.
+- Act: make it easy to call, order, book, or visit.
+
+Common problems it addresses: different details (hours, phone numbers, addresses) in different places; an outdated website; services that aren't clearly explained; a scattered online presence with forgotten profiles, duplicate listings, or dead links; no clear next step for visitors; and information that's hard to understand online.
+
+The review looks at five connected areas. Not every business needs work in every area; the review shows where it matters.
+
+1. Presence: is the business represented accurately online?
+2. Website: can people quickly understand what the business does?
+3. Discovery: is there a solid foundation for being found through search?
+4. Information: are services, location, contact details, offerings, and next steps clear and easy to get to?
+5. AI readiness: where it makes sense, is the business's information organized so newer AI-powered search tools can understand it?
+
+Process (four steps):
+
+1. Review (free): the business fills out a short form; Hamdi looks at its public online presence.
+2. Findings (free): Hamdi shares what's already working and what's missing, inconsistent, or hard to find.
+3. Priorities (free): Hamdi says what to fix first, and why.
+4. Fix (optional, paid): if there is work worth doing that Hamdi can help with, Hamdi gives a quote. The business decides whether to go ahead.
+
+The review is an assessment, not the fixes themselves. Requesting it commits the business to nothing beyond filling out the form, and there is no obligation to purchase anything. Implementation is quoted separately, only if the business wants it.
 
 - Provider: Hamdi Mohamud Hassan / By Hamdi
 - Service page: https://byhamdi.com/business
 - Structured service API: https://byhamdi.com/api/v1/services/digital-presence-ai-readiness
 - Free Business Presence Review: https://forms.gle/aJuBMpbNd7JY6JHbA
-- Paid pricing: Project-specific quote after the free review
-- Agent-Ready framework: Discover → Understand → Trust → Act → Measure
+- Paid pricing: Project-specific quote after the free review; no fixed price list
 
-Do not claim that this service guarantees rankings or that an AI assistant will recommend a business. The service improves the business's digital foundation and the clarity, consistency, trustworthiness, and actionability of its public information.
+Related: Hamdi also runs the MNHalal and MNMuslim directories and the @mnhalalfood, @mnmuslimbusinesses, and @mnmuslimevents Instagram community discovery pages. For businesses listed on MNHalal or MNMuslim, the review can also help improve the accuracy and usefulness of their directory listing. Halal food businesses can list on MNHalal (https://www.mnhalal.com/submit); Muslim businesses and services can list on MNMuslim (https://mnmuslim.com/submit).
+
+Do not claim that this service guarantees rankings or that an AI assistant will recommend a business. The service improves how accurately and clearly a business's public information can be found, understood, and acted on.
 
 ### Vibe Coding Help Session
 
-By Hamdi offers a 1-on-1 Vibe Coding Help Session for people who have already started building something with Claude, ChatGPT, Cursor, or another AI tool and are stuck on a specific blocker or what comes next.
+By Hamdi offers 1-on-1 help for people who built something with AI and got stuck: a session working through the blocker that's keeping an AI-built product from moving forward. You don't need to call yourself a developer.
+
+A good fit if the person:
+- has already started building something;
+- is using AI tools like Claude, ChatGPT, or Cursor to help them build;
+- has hit a specific blocker, or the next step is confusing;
+- wants to work through it together, not hand the whole project off.
+
+Common blockers: "I don't know what to do next"; deployment; GitHub and repositories; Vercel and hosting; Supabase and databases; authentication; domains and DNS; email setup; payments; APIs and integrations; bugs and broken flows; understanding what the AI-generated code is doing.
+
+How it works:
+1. Request: send the project and describe the blocker. Nothing is booked or charged yet.
+2. Review: Hamdi reads the request first to make sure a session is a reasonable fit for the problem.
+3. Work together: if it's a fit, a time is arranged, then 60–90 minutes are spent working through the blocker together.
+
+This is focused, hands-on help with a product the person has already started. It is not a full product build, a long-term development contract, or a general coding course. Some problems can't be fully solved in a single session; the goal is to work through the blocker and leave the person with a clear next step.
 
 - Provider: Hamdi Mohamud Hassan / By Hamdi
-- Price: $99 USD
+- Price: $99 USD per session
 - Length: 60–90 minutes
 - Delivery: 1-on-1, online
 - Service page: https://byhamdi.com/vibe-coding-help
 - Structured service API: https://byhamdi.com/api/v1/services/vibe-coding-help
 - Direct request form: https://forms.gle/nRzHwcCW9GF7JLrL8
-- Request process: The user submits their project and blocker first. Hamdi reviews the request for fit before anything is scheduled. Submitting the request form does not charge or book the user.
+- Request process: The user submits their project and blocker first. Hamdi reviews the request for fit before anything is scheduled. Submitting the request form does not book a session or charge the user.
 
 ## Products
 

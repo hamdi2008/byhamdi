@@ -5,13 +5,13 @@ import AccentText from "@/components/ui/AccentText";
 import Button from "@/components/ui/Button";
 import Eyebrow from "@/components/ui/Eyebrow";
 import Section, { sectionHeading } from "@/components/ui/Section";
-import Steps, { type Step } from "@/components/ui/Steps";
+import Steps from "@/components/ui/Steps";
 import TextLink from "@/components/ui/TextLink";
 import { IconCheck } from "@/components/icons/IconCheck";
-import { vibeCodingHelp } from "@/content/home";
+import { blockers, featuredBlocker, fit, howItWorks, intro, notes, scope, vibeService } from "@/content/vibe";
 
 const pageUrl = "https://byhamdi.com/vibe-coding-help";
-const requestUrl = vibeCodingHelp.cta.href;
+const requestUrl = vibeService.requestUrl;
 
 export const metadata: Metadata = {
   title: "Vibe Coding Help Session",
@@ -34,7 +34,7 @@ const structuredData = {
   name: "Vibe Coding Help Session",
   url: pageUrl,
   description:
-    "A 60–90 minute hands-on help session for people who have started building with AI and are stuck on a specific product, deployment, setup, feature, integration, error, or next-step blocker.",
+    vibeService.description,
   provider: {
     "@type": "Person",
     "@id": "https://byhamdi.com/#hamdi",
@@ -74,33 +74,6 @@ const requestExample = [
   ["Where you're stuck", "It works on my laptop but the deployed version won't log anyone in."],
 ];
 
-const blockers = [
-  "Deployment",
-  "GitHub & repositories",
-  "Vercel & hosting",
-  "Supabase & databases",
-  "Authentication",
-  "Domains & DNS",
-  "Email setup",
-  "Payments",
-  "APIs & integrations",
-  "Bugs & broken flows",
-  "Understanding what the AI-generated code is doing",
-];
-
-const fit = [
-  "You've already started building something.",
-  "You're using AI tools like Claude, ChatGPT, or Cursor to help you build.",
-  "You've hit a specific blocker, or the next step is confusing.",
-  "You want to work through it together, not hand the whole project off.",
-];
-
-const howItWorks: Step[] = [
-  { title: "Request", body: "Send your project and describe the blocker. Nothing is booked or charged yet." },
-  { title: "I review", body: "I read your request first to make sure a session is a reasonable fit for the problem." },
-  { title: "We work together", body: "If it's a fit, we arrange a time. Then we spend 60–90 minutes working through the blocker together." },
-];
-
 const shipped = [
   { label: "MNHalal", href: "https://www.mnhalal.com/", color: "orange" as const },
   { label: "MNMuslim", href: "https://www.mnmuslim.com/", color: "purple" as const },
@@ -113,7 +86,6 @@ const checkChip = {
   purple: "bg-[linear-gradient(150deg,#7c3acd,#5e2fb0)] shadow-[0_8px_16px_-8px_rgba(94,47,176,.6)]",
 };
 
-const requestNote = "Submitting a request doesn't book a session or charge you. I review it first.";
 const proseText = "m-0 text-[clamp(16px,1.4vw,19px)] leading-[1.65] font-medium text-bh-body";
 
 export default function VibeCodingHelpPage() {
@@ -129,8 +101,8 @@ export default function VibeCodingHelpPage() {
               <h1 className="m-0 max-w-[11ch] text-[clamp(46px,7vw,92px)] leading-[.92] font-bold tracking-[-.055em]">
                 <AccentText before="Vibe Coding " accent="Help" after="." color="orange" />
               </h1>
-              <p className="mt-1 mb-0 max-w-[24ch] text-[clamp(22px,2.3vw,30px)] leading-[1.2] font-semibold tracking-[-.025em] text-bh-ink-purple">Built something with AI and got stuck?</p>
-              <p className="m-0 max-w-[46ch] text-[17px] leading-[1.65] font-medium text-bh-body">Get 1-on-1 help working through the blocker that&apos;s keeping your AI-built product from moving forward.</p>
+              <p className="mt-1 mb-0 max-w-[24ch] text-[clamp(22px,2.3vw,30px)] leading-[1.2] font-semibold tracking-[-.025em] text-bh-ink-purple">{intro.question}</p>
+              <p className="m-0 max-w-[46ch] text-[17px] leading-[1.65] font-medium text-bh-body">{intro.body}</p>
               <dl className="m-0 mt-1.5 grid grid-cols-3 items-stretch self-start overflow-hidden rounded-[18px] border border-[#e0d6c2] bg-bh-card max-sm:self-stretch">
                 {stats.map(([value, label], i) => (
                   <div key={label} className={`flex min-w-0 flex-col-reverse justify-end gap-0.5 px-[clamp(14px,2vw,22px)] py-3.5 ${i > 0 ? "border-l border-[#e0d6c2]" : ""}`}>
@@ -140,8 +112,8 @@ export default function VibeCodingHelpPage() {
                 ))}
               </dl>
               <div className="mt-1.5 flex flex-col gap-3">
-                <Button href={vibeCodingHelp.cta.href} label={vibeCodingHelp.cta.label} size="xl" className="self-start max-sm:self-stretch" />
-                <p className="m-0 max-w-[44ch] text-sm leading-[1.55] font-medium text-bh-muted">{requestNote}</p>
+                <Button href={requestUrl} label={vibeService.requestLabel} size="xl" className="self-start max-sm:self-stretch" />
+                <p className="m-0 max-w-[44ch] text-sm leading-[1.55] font-medium text-bh-muted">{notes.request}</p>
               </div>
             </div>
             {/* Illustrative preview of what the request form asks — not a live form. */}
@@ -171,7 +143,7 @@ export default function VibeCodingHelpPage() {
           <ul className="m-0 flex list-none flex-wrap gap-2.5 p-0">
             <li className="inline-flex items-center gap-2.5 rounded-full border border-bh-ink-purple bg-bh-ink-purple px-5 py-3 text-[clamp(16px,1.5vw,18px)] leading-[1.3] font-bold text-bh-bg">
               <span aria-hidden="true" className="h-[7px] w-[7px] flex-none rounded-full bg-bh-orange-light" />
-              “I don&apos;t know what to do next”
+              “{featuredBlocker}”
             </li>
             {blockers.map((blocker, i) => (
               <li key={blocker} className="inline-flex items-center gap-2.5 rounded-full border border-[#e0d6c2] bg-bh-card px-[18px] py-3 text-[clamp(15px,1.4vw,17px)] leading-[1.3] font-semibold text-bh-ink-purple">
@@ -209,17 +181,17 @@ export default function VibeCodingHelpPage() {
             </h2>
           </div>
           <Steps steps={howItWorks} />
-          <p className="m-0 max-w-[70ch] text-[15px] leading-[1.6] font-medium text-[#5a544a]">Some problems can&apos;t be fully solved in a single session. The goal is to work through your blocker together and leave you with a clear next step.</p>
+          <p className="m-0 max-w-[70ch] text-[15px] leading-[1.6] font-medium text-[#5a544a]">{notes.session}</p>
         </Section>
 
         <Section id="vibe-scope" flush="top" innerClassName="grid grid-cols-[repeat(auto-fit,minmax(min(100%,380px),1fr))] gap-3.5">
           <div className="flex flex-col gap-3 rounded-3xl border border-t-4 border-bh-hairline border-t-bh-orange bg-bh-card p-[clamp(24px,3vw,36px)]">
             <span className="font-mono-bh text-xs font-bold tracking-[.2em] text-bh-orange-deep uppercase">This is</span>
-            <p className="m-0 text-[clamp(20px,2vw,24px)] leading-[1.3] font-semibold tracking-[-.02em] text-bh-ink-purple">Focused, hands-on help with a product you&apos;ve already started.</p>
+            <p className="m-0 text-[clamp(20px,2vw,24px)] leading-[1.3] font-semibold tracking-[-.02em] text-bh-ink-purple">{scope.is}</p>
           </div>
           <div className="flex flex-col gap-3 rounded-3xl border border-[#e0d6c2] p-[clamp(24px,3vw,36px)]">
             <span className="font-mono-bh text-xs font-bold tracking-[.2em] text-bh-muted uppercase">This isn&apos;t</span>
-            <p className="m-0 text-[clamp(20px,2vw,24px)] leading-[1.3] font-semibold tracking-[-.02em] text-bh-body">A full product build, a long-term development contract, or a general coding course.</p>
+            <p className="m-0 text-[clamp(20px,2vw,24px)] leading-[1.3] font-semibold tracking-[-.02em] text-bh-body">{scope.isNot}</p>
           </div>
         </Section>
 
@@ -231,7 +203,7 @@ export default function VibeCodingHelpPage() {
             </h2>
           </div>
           <div className="flex flex-col gap-[18px] pt-[clamp(0px,3vw,40px)]">
-            <p className={proseText}>I build and ship my own AI-powered products. Along the way I keep working through the same practical problems: deployment, databases, auth, integrations, domains, payments, and getting an AI-generated app from prototype to something real and usable.</p>
+            <p className={proseText}>{notes.whyHamdi}</p>
             <p className={proseText}>So the help is hands-on. We look at your actual project and work through it together.</p>
             <div className="mt-1.5 flex flex-wrap gap-x-5 gap-y-2.5 border-t border-[#e0d6c2] pt-[18px]">
               <Eyebrow className="w-full text-[11px] tracking-[.2em]">Things I&apos;ve shipped</Eyebrow>
@@ -252,8 +224,8 @@ export default function VibeCodingHelpPage() {
           <p className="m-0 max-w-[40ch] text-[clamp(17px,1.6vw,20px)] leading-[1.55] font-medium text-[#d9d1e6]">Tell me what you&apos;re working on and where you&apos;re stuck.</p>
           <span className="text-lg font-bold">$99 · 60–90 minutes</span>
           <div className="mt-2 flex w-full flex-col items-center gap-3">
-            <Button href={vibeCodingHelp.cta.href} label={vibeCodingHelp.cta.label} size="xl" />
-            <p className="m-0 max-w-[44ch] text-sm leading-[1.55] font-medium text-[#c4b9d6]">{requestNote}</p>
+            <Button href={requestUrl} label={vibeService.requestLabel} size="xl" />
+            <p className="m-0 max-w-[44ch] text-sm leading-[1.55] font-medium text-[#c4b9d6]">{notes.request}</p>
           </div>
         </Section>
       </main>

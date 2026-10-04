@@ -23,7 +23,8 @@ Open [http://localhost:3000](http://localhost:3000).
 Page copy lives in `src/content/` — edit these instead of hunting through components:
 
 - `src/content/site.ts` — brand, contact info, social links, footer nav
-- `src/content/home.ts` — hero, services, products, about, building-in-public sections (plus Vibe Coding Help data used by its API)
+- `src/content/home.ts` — hero, services, products, about, building-in-public sections
+- `src/content/business.ts`, `src/content/vibe.ts` — service page copy, also served by `/api/v1/services/*`
 
 ## Project structure
 

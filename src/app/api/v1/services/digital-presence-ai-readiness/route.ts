@@ -1,23 +1,43 @@
 import { NextResponse } from "next/server";
+import { businessService, coreQuestion, directories, goals, instagram, notes, problems, process, reviewAreas, reviewQuestions } from "@/content/business";
 
 export const dynamic = "force-static";
 
 export function GET() {
   return NextResponse.json({
     id: "digital-presence-ai-readiness",
-    name: "Digital Presence & AI Readiness",
+    name: businessService.name,
     provider: { name: "Hamdi Mohamud Hassan", brand: "By Hamdi", website: "https://byhamdi.com" },
-    description: "A business digital presence review and implementation service covering online information cleanup, website fixes, search and SEO foundations, identity and trust, customer action paths, and AI and agent readiness.",
-    audience: "Businesses that want a cleaner, more accurate online presence and stronger foundations for customer, search-engine, and AI discovery.",
+    description: businessService.description,
+    audience: "Businesses that are already online and want customers, search engines, and AI tools to find, understand, and act on accurate information about them.",
+    coreQuestion,
+    goals,
+    commonProblems: problems,
     review: {
+      name: businessService.reviewName,
       price: 0,
       currency: "USD",
-      areas: ["digital presence", "website", "search and SEO", "identity and trust", "customer actions", "AI and agent readiness"],
-      url: "https://forms.gle/aJuBMpbNd7JY6JHbA",
-      note: "The Business Presence Review is free. If Hamdi identifies implementation work she can help with, she provides recommendations and a quote before any paid work begins. There is no obligation to purchase anything."
+      url: businessService.reviewUrl,
+      areas: reviewAreas,
+      answers: reviewQuestions,
+      note: `${notes.review} ${notes.assessment}`,
     },
-    pricing: { model: "project quote after free review", note: "Paid implementation scope and price depend on the issues found and the work the business chooses to proceed with." },
-    framework: ["Discover", "Understand", "Trust", "Act", "Measure"],
-    canonicalUrl: "https://byhamdi.com/business"
+    process: process.map((step, i) => ({
+      step: i + 1,
+      name: step.title,
+      description: step.body,
+      cost: step.paid ? "Optional paid work, quoted separately. Only if the business chooses to proceed." : "Free",
+    })),
+    commitment: notes.commitment,
+    pricing: {
+      model: "Free review, findings, and priorities; optional implementation quoted per project",
+      note: "Paid implementation scope and price depend on what the review finds and what the business chooses to fix. No fixed price list; nothing is charged for the review.",
+    },
+    relatedDirectories: {
+      note: notes.directoryListing,
+      directories: directories.map(({ name, url, submitUrl, description }) => ({ name, url, submitUrl, description })),
+      communityDiscovery: { note: notes.communityDiscovery, instagram },
+    },
+    canonicalUrl: businessService.url,
   });
 }

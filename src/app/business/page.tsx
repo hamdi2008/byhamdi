@@ -10,9 +10,10 @@ import Steps, { type Step } from "@/components/ui/Steps";
 import TextLink from "@/components/ui/TextLink";
 import Wordmark from "@/components/ui/Wordmark";
 import { externalLinkProps } from "@/lib/links";
+import { businessService, directories, goals, instagram, notes, problems, process, reviewAreas, reviewQuestions } from "@/content/business";
 
 const pageUrl = "https://byhamdi.com/business";
-const reviewUrl = "https://forms.gle/aJuBMpbNd7JY6JHbA";
+const reviewUrl = businessService.reviewUrl;
 
 export const metadata: Metadata = {
   title: "Digital Presence & AI Readiness",
@@ -21,56 +22,14 @@ export const metadata: Metadata = {
   openGraph: { title: "Digital Presence & AI Readiness — By Hamdi", description: "Business digital presence cleanup, website and search improvements, customer action fixes, and AI readiness from Hamdi Mohamud Hassan.", url: pageUrl, type: "website" },
 };
 
-const mnhalal = "https://www.mnhalal.com/";
-const mnmuslim = "https://www.mnmuslim.com/";
+const [mnhalal, mnmuslim] = directories.map((d) => d.url);
+const directoryColors = ["orange", "purple"] as const;
 
-const questionSteps = [
-  ["Find", "Show up when someone looks for what you offer."],
-  ["Understand", "Make it clear what you do, where, and when."],
-  ["Act", "Make it easy to call, order, book, or visit."],
-];
-
-const problems = [
-  ["Different details in different places", "Your website, Google, and a directory each list slightly different hours, phone numbers, or addresses."],
-  ["An outdated website", "Old menus or prices, a location that moved, or a page that hasn't been touched in years."],
-  ["Services that aren't clearly explained", "People can't tell exactly what you offer, who it's for, or whether you serve their area."],
-  ["A scattered online presence", "Forgotten profiles, duplicate listings, and links that lead nowhere."],
-  ["No clear next step", "Visitors can't easily call, order, book, get directions, or reach the right person."],
-  ["Information that's hard to understand online", "Important details about what you offer, where you operate, or how customers can take action aren't clearly presented."],
-];
-
-const reviewAreas = [
-  ["Presence", "Is your business represented accurately online?"],
-  ["Website", "Can people quickly understand what your business does?"],
-  ["Discovery", "Is there a solid foundation for being found through search?"],
-  ["Information", "Are your services, location, contact details, offerings, and next steps clear and easy to get to?"],
-  ["AI readiness", "Where it makes sense for your business, is your information organized so newer AI-powered search tools can understand it?"],
-];
-
-const reviewQuestions = [
-  "What's already working?",
-  "What information is missing, inconsistent, or hard to find?",
-  "What should be fixed first?",
-  "Are there real opportunities to improve how you show up in search or AI tools?",
-];
-
-const process: Step[] = [
-  { title: "Review", body: "You fill out a short form about your business. I look at your public online presence.", tag: { label: "Free", tone: "free" } },
-  { title: "Findings", body: "I share what's already working and what's missing, inconsistent, or hard to find.", tag: { label: "Free", tone: "free" } },
-  { title: "Priorities", body: "I tell you what I'd fix first, and why.", tag: { label: "Free", tone: "free" } },
-  { title: "Fix", body: "If there's work worth doing and I can help, I'll give you a quote. You decide whether to go ahead.", tag: { label: "Only if you choose", tone: "paid" } },
-];
-
-const directoryLinks = [
-  { label: "List a halal food business on MNHalal ↗", href: "https://www.mnhalal.com/submit", color: "orange" as const },
-  { label: "List a business or service on MNMuslim ↗", href: "https://mnmuslim.com/submit", color: "purple" as const },
-];
-
-const instagram = [
-  { handle: "@mnhalalfood", href: "https://www.instagram.com/mnhalalfood/", color: "text-bh-orange-deep", description: "Helping people discover halal food in Minnesota while giving local halal food businesses another way to reach customers." },
-  { handle: "@mnmuslimbusinesses", href: "https://www.instagram.com/mnmuslimbusinesses/", color: "text-bh-purple", description: "Helping people discover Muslim businesses and service providers in Minnesota while giving those businesses another way to reach the local community." },
-  { handle: "@mnmuslimevents", href: "https://www.instagram.com/mnmuslimevents/", color: "text-bh-purple", description: "Helping people discover Muslim events across Minnesota while giving organizers another way to reach the community." },
-];
+const processSteps: Step[] = process.map((step) => ({
+  title: step.title,
+  body: step.body,
+  tag: step.paid ? { label: "Only if you choose", tone: "paid" } : { label: "Free", tone: "free" },
+}));
 
 const pad = (i: number) => String(i + 1).padStart(2, "0");
 const bodyText = "m-0 text-[17px] leading-[1.65] font-medium text-bh-body";
@@ -81,7 +40,7 @@ const splitHeader = "grid grid-cols-[repeat(auto-fit,minmax(min(100%,420px),1fr)
 
 const structuredData = {
   "@context": "https://schema.org", "@type": "Service", "@id": `${pageUrl}/#service`, name: "Digital Presence & AI Readiness", url: pageUrl,
-  description: "A business digital presence review and implementation service covering online information cleanup, website fixes, search and SEO foundations, identity and trust, customer action paths, and AI and agent readiness.",
+  description: businessService.description,
   provider: { "@type": "Person", "@id": "https://byhamdi.com/#hamdi", name: "Hamdi Mohamud Hassan", url: "https://byhamdi.com" },
   areaServed: { "@type": "State", name: "Minnesota" },
   potentialAction: { "@type": "ApplyAction", name: "Request a Free Business Presence Review", target: { "@type": "EntryPoint", urlTemplate: reviewUrl, actionPlatform: "https://schema.org/DesktopWebPlatform" }, description: "Request a free review of the business's public online presence. A review request does not require or purchase paid work." },
@@ -104,7 +63,7 @@ export default function BusinessPage() {
               <p className={`${bodyText} max-w-[54ch] leading-[1.68]`}>I help businesses make sure the information about them online is accurate, clear, and easy to act on. That matters for customers, search engines, and the AI tools people increasingly use to discover businesses.</p>
               <div className="mt-2 flex flex-col gap-3">
                 <Button href={reviewUrl} label="Get a Free Business Presence Review" className={formCta} />
-                <p className={`${note} max-w-[54ch]`}>The review is free. If I find work I can help with, I&apos;ll explain what I recommend and give you a quote before any paid work begins.</p>
+                <p className={`${note} max-w-[54ch]`}>{notes.review}</p>
               </div>
             </div>
             <div className="flex flex-col gap-[clamp(18px,2.4vw,26px)] rounded-[28px] bg-bh-ink-purple p-[clamp(26px,3.4vw,44px)] text-bh-bg shadow-[0_40px_70px_-40px_rgba(36,26,51,.7)]">
@@ -113,8 +72,8 @@ export default function BusinessPage() {
                 <AccentText before="Can people, and the systems they use, find, understand, and act on " accent="accurate" after=" information about your business?" color="orange-light" />
               </p>
               <ol className="m-0 flex list-none flex-col p-0">
-                {questionSteps.map(([title, description], i) => (
-                  <li key={title} className={`grid grid-cols-[28px_minmax(0,1fr)] gap-x-3.5 gap-y-1 border-t border-bh-bg/[.14] pt-3.5 ${i < questionSteps.length - 1 ? "pb-3.5" : ""}`}>
+                {goals.map(({ name: title, description }, i) => (
+                  <li key={title} className={`grid grid-cols-[28px_minmax(0,1fr)] gap-x-3.5 gap-y-1 border-t border-bh-bg/[.14] pt-3.5 ${i < goals.length - 1 ? "pb-3.5" : ""}`}>
                     <span className="font-mono-bh pt-[5px] text-xs text-bh-orange-light">{pad(i)}</span>
                     <b className="text-[19px] tracking-[-.02em]">{title}</b>
                     <span />
@@ -137,7 +96,7 @@ export default function BusinessPage() {
             <p className={`${bodyText} max-w-[46ch]`}>Most of these are small and easy to miss from the inside. Customers notice them right away, and often just move on to the next business.</p>
           </div>
           <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,300px),1fr))] gap-x-10">
-            {problems.map(([title, description], i) => (
+            {problems.map(({ title, description }, i) => (
               <div key={title} className="grid grid-cols-[auto_minmax(0,1fr)] gap-x-3.5 gap-y-1.5 border-t border-[#e0d6c2] py-[22px]">
                 <span aria-hidden="true" className={`mt-[9px] h-2 w-2 rounded-full ${i % 2 === 0 ? "bg-bh-orange" : "bg-bh-purple"}`} />
                 <h3 className="m-0 text-[19px] leading-[1.3] font-bold tracking-[-.02em] text-bh-ink-purple">{title}</h3>
@@ -162,7 +121,7 @@ export default function BusinessPage() {
           <div className="relative max-[900px]:pl-[34px]">
             <div aria-hidden="true" className="absolute top-[9px] right-[9px] left-[9px] h-[1.5px] bg-[linear-gradient(90deg,#ff6a3d,#c14a6e_60%,#5e2fb0)] opacity-35 max-[900px]:top-2.5 max-[900px]:right-auto max-[900px]:bottom-2.5 max-[900px]:h-auto max-[900px]:w-[1.5px] max-[900px]:bg-[linear-gradient(180deg,#ff6a3d,#c14a6e_60%,#5e2fb0)]" />
             <ol className="relative m-0 grid list-none gap-5 p-0 max-[900px]:gap-[26px] min-[900px]:grid-cols-5">
-              {reviewAreas.map(([title, description], i) => {
+              {reviewAreas.map(({ name: title, question: description }, i) => {
                 const purple = i >= 3;
                 return (
                   <li key={title} className="relative flex flex-col gap-3 max-[900px]:gap-1.5">
@@ -190,7 +149,7 @@ export default function BusinessPage() {
             <p className={`${bodyText} max-w-[46ch]`}>Before recommending any work, I look at how your business currently shows up online and point out the problems and opportunities that actually matter.</p>
             <div className="mt-1.5 flex flex-col gap-3">
               <Button href={reviewUrl} label="Get a Free Business Presence Review" className={formCta} />
-              <p className={`${note} max-w-[46ch]`}>The review is an assessment, not the fixes themselves. Any implementation work is quoted separately, and only if you want it.</p>
+              <p className={`${note} max-w-[46ch]`}>{notes.assessment}</p>
             </div>
           </div>
           <div className="flex flex-col gap-1.5">
@@ -211,10 +170,10 @@ export default function BusinessPage() {
               <AccentText before="Clear steps. " accent="No obligation" after="." color="purple" />
             </h2>
           </div>
-          <Steps steps={process} rail titleClassName="text-[26px]" />
+          <Steps steps={processSteps} rail titleClassName="text-[26px]" />
           <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,340px),1fr))] items-baseline gap-x-12 gap-y-3 border-t border-[#e0d6c2] pt-[clamp(22px,3vw,32px)]">
             <h3 className="m-0 text-[clamp(22px,2.4vw,28px)] font-bold tracking-[-.03em] text-bh-ink-purple">What you&apos;re committing to</h3>
-            <p className="m-0 text-base leading-[1.65] font-medium text-bh-body">Nothing beyond filling out the form. I&apos;ll look at your public online presence, share the most important things I find, and tell you what I&apos;d recommend fixing. There&apos;s no obligation to purchase anything.</p>
+            <p className="m-0 text-base leading-[1.65] font-medium text-bh-body">{notes.commitment}</p>
           </div>
         </Section>
 
@@ -234,18 +193,18 @@ export default function BusinessPage() {
               For businesses listed on <TextLink href={mnhalal} color="orange">MNHalal</TextLink> or <TextLink href={mnmuslim}>MNMuslim</TextLink>, the review can also help improve the accuracy and usefulness of their directory listing.
             </p>
             <div className="flex flex-wrap gap-x-5 gap-y-2.5">
-              {directoryLinks.map((link) => (
-                <TextLink key={link.href} href={link.href} color={link.color} className="pb-0.5 text-[15px]">
-                  {link.label}
+              {directories.map((directory, i) => (
+                <TextLink key={directory.submitUrl} href={directory.submitUrl} color={directoryColors[i]} className="pb-0.5 text-[15px]">
+                  {directory.submitLabel} ↗
                 </TextLink>
               ))}
             </div>
             <div className="mt-1.5 flex flex-col gap-1 rounded-[20px] border border-bh-hairline bg-bh-band/70 p-[clamp(18px,2.4vw,24px)]">
               <Eyebrow className="text-[11px] tracking-[.2em]">Community discovery</Eyebrow>
-              <p className="my-1.5 text-[15px] leading-[1.55] font-medium text-bh-body">I also run community discovery pages that help Minnesota Muslims find local food, businesses, services, and events.</p>
-              {instagram.map((account) => (
-                <a key={account.handle} href={account.href} {...externalLinkProps(account.href)} className="group flex flex-col gap-[3px] border-t border-[#e0d6c2] py-3 no-underline">
-                  <span className={`flex items-center gap-2 text-base font-bold transition-colors duration-200 group-hover:text-bh-orange ${account.color}`}>
+              <p className="my-1.5 text-[15px] leading-[1.55] font-medium text-bh-body">{notes.communityDiscovery}</p>
+              {instagram.map((account, i) => (
+                <a key={account.handle} href={account.url} {...externalLinkProps(account.url)} className="group flex flex-col gap-[3px] border-t border-[#e0d6c2] py-3 no-underline">
+                  <span className={`flex items-center gap-2 text-base font-bold transition-colors duration-200 group-hover:text-bh-orange ${i === 0 ? "text-bh-orange-deep" : "text-bh-purple"}`}>
                     {account.handle}
                     <span aria-hidden="true" className="font-mono-bh text-xs">↗</span>
                   </span>

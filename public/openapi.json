@@ -1,16 +1,21 @@
 {
   "openapi": "3.1.0",
-  "info": { "title": "By Hamdi Public Services API", "version": "1.1.0", "description": "Public, read-only structured information about services offered by By Hamdi." },
+  "info": { "title": "By Hamdi Public Services API", "version": "1.2.0", "description": "Public, read-only structured information about services offered by By Hamdi." },
   "servers": [{ "url": "https://byhamdi.com", "description": "Production" }],
   "paths": {
     "/api/v1/services/vibe-coding-help": {
-      "get": { "operationId": "getVibeCodingHelp", "summary": "Get Vibe Coding Help Session details", "responses": { "200": { "description": "Current Vibe Coding Help Session details" } } }
+      "get": {
+        "operationId": "getVibeCodingHelp",
+        "summary": "Get Vibe Coding Help Session details",
+        "description": "Returns current public information about By Hamdi's 1-on-1 Vibe Coding Help Session ($99, 60–90 minutes), including who it's a good fit for, common blockers, the three-step request → review → work-together process, scope, the request form URL, and the canonical service URL. Submitting the request form does not book a session or charge the user.",
+        "responses": { "200": { "description": "Current Vibe Coding Help Session details" } }
+      }
     },
     "/api/v1/services/digital-presence-ai-readiness": {
       "get": {
         "operationId": "getDigitalPresenceAIReadiness",
         "summary": "Get Digital Presence & AI Readiness service details",
-        "description": "Returns current public information about By Hamdi's business digital presence and AI readiness service, including the free review, areas reviewed, project-specific pricing model, Agent-Ready framework, and canonical service URL.",
+        "description": "Returns current public information about By Hamdi's Digital Presence & AI Readiness service, including the free Business Presence Review and its form URL, the five review areas, the four-step process (free review, findings, and priorities; optional paid fix quoted separately), pricing model, related MNHalal/MNMuslim directories, and canonical service URL.",
         "responses": { "200": { "description": "Current Digital Presence & AI Readiness service details" } }
       }
     }
