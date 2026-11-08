@@ -1,6 +1,6 @@
 # By Hamdi
 
-The homepage for [By Hamdi](https://www.byhamdi.co) — a one-person studio building useful AI-powered products in Minnesota.
+The homepage for [By Hamdi](https://byhamdi.com) — a one-person studio building useful AI-powered products in Minnesota.
 
 ## Stack
 
