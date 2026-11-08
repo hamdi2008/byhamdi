@@ -17,9 +17,9 @@ export default function Footer() {
             </div>
             <MonoTagline className="text-xs tracking-[.2em] text-bh-muted" />
           </div>
-          <FooterColumn title="Services" links={footerNav.services} />
           <FooterColumn title="Products" links={footerNav.products} />
-          <FooterColumn title="Explore" links={footerNav.explore} />
+          <FooterColumn title="Learn" links={footerNav.learn} />
+          <FooterColumn title="Follow" links={footerNav.follow} />
           <FooterColumn title="Connect" links={footerNav.connect} />
         </div>
         <div className="font-mono-bh flex flex-wrap justify-between gap-3 border-t border-bh-hairline-alt pt-5 text-xs tracking-[.06em] text-bh-muted">

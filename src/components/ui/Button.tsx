@@ -16,13 +16,13 @@ const variants = {
 };
 
 const sizes = {
-  /** Service cards. */
+  /** Homepage service section. */
   md: "px-[26px] py-[15px] text-base",
-  /** Homepage hero pair. */
+  /** Homepage hero. */
   hero: "px-8 py-[18px] text-[clamp(16px,1.4vw,19px)]",
-  /** Business Presence Review form CTAs. */
+  /** Default CTA. */
   lg: "min-h-[52px] px-[30px] py-[18px] text-[clamp(16px,1.4vw,18px)]",
-  /** Vibe Coding Help request CTAs. */
+  /** AI Sessions request CTAs. */
   xl: "min-h-[52px] px-9 py-[18px] text-[clamp(17px,1.5vw,19px)]",
 };
 

@@ -5,7 +5,7 @@ const dotColor: Record<"orange" | "purple", string> = {
   purple: "text-bh-purple",
 };
 
-/** "Build. Learn. Share." mono line — reused across About and the footer. */
+/** "Build. Learn. Share." mono line, used as the brand tagline in the footer. */
 export default function MonoTagline({ className = "" }: { className?: string }) {
   return (
     <span className={`font-mono-bh uppercase ${className}`}>

@@ -63,7 +63,7 @@ export default function Nav() {
             {nav.links.map((link) => (
               <Link key={link.href} href={link.href} onClick={close} className="flex min-h-[52px] items-center justify-between border-b border-bh-hairline text-lg font-semibold text-bh-ink-purple no-underline">
                 {link.label}
-                <span aria-hidden="true" className="font-mono-bh text-[13px] text-bh-muted">↓</span>
+                <span aria-hidden="true" className="font-mono-bh text-[13px] text-bh-muted">{link.href.startsWith("/#") ? "↓" : "→"}</span>
               </Link>
             ))}
             <Link href={nav.contact.href} onClick={close} className="mt-4 flex min-h-12 items-center justify-center gap-2.5 rounded-full bg-bh-ink-purple text-base font-bold text-bh-bg no-underline">

@@ -1,65 +1,40 @@
 // Homepage copy — source of truth for section content.
-import { taglineWords, socials } from "./site";
+import { aiSessions } from "./ai-sessions";
+import { productLinks, productUrls } from "./site";
 
 export const hero = {
   headline: { before: "Building ", accent: "useful", after: " AI-powered products." },
-  supporting: taglineWords,
-  primaryCta: { label: "Digital Presence & AI Help", href: "/business" },
-  secondaryCta: { label: "Vibe Coding Help", href: "/vibe-coding-help" },
-  recentlyShipped: {
-    eyebrow: "Recently shipped",
-    links: [
-      { label: "MNHalal", href: "https://www.mnhalal.com/", accent: "purple" as const },
-      { label: "MNMuslim", href: "https://www.mnmuslim.com/", accent: "orange" as const },
-      { label: "Life in Views", href: "https://lifeinviews.com", accent: "orange" as const },
-      { label: "MN Somali", href: "https://www.mnsomalis.com/", accent: "purple" as const },
-    ],
-  },
+  supporting: "I build products, share what I learn, and help others use AI to bring their own ideas to life.",
+  primaryCta: { label: "AI Sessions with Hamdi", href: "/ai-sessions" },
+  products: { eyebrow: "Products I've Built", links: productLinks },
 };
 
 export const services = {
-  eyebrow: "Services",
-  heading: { before: "Ways I Can ", accent: "Help", after: "." },
-  business: {
-    eyebrow: "For businesses",
-    title: "Digital Presence & AI Readiness",
-    description: "Is your business showing up correctly online? I help businesses fix problems across their website and online presence, improve their search foundation, and prepare for discovery through AI.",
-    cta: { label: "Learn More", href: "/business" },
-    meta: "Start with a free Business Presence Review",
-  },
-  vibe: {
-    eyebrow: "For people building with AI",
-    title: "Vibe Coding Help",
-    description: "Built something with AI and got stuck? Get 1-on-1 help getting your AI-built product working and live.",
-    cta: { label: "Request Help", href: "/vibe-coding-help" },
-    meta: "$99 · 60–90 minutes",
-  },
+  eyebrow: aiSessions.name,
+  description: "Personalized, hands-on guidance to help you solve problems, create things, and learn to use AI independently.",
+  learnMore: { label: "Learn More", href: "/ai-sessions" },
 };
 
 export type ProductId = "lifeinviews" | "mnsomalis" | "mnmuslim" | "mnhalal";
 export const productsSection = {
   heading: { before: "Products I've ", accent: "Built", after: "" },
-  supporting: "Building useful AI-powered products.",
+  featured: {
+    id: "fursahhouse",
+    name: "Fursah House",
+    logo: "/brand/fursah-house-avatar-cream.svg",
+    tagline: "Where founders and opportunities meet.",
+    description: "Discover founders, projects, and opportunities to connect, collaborate, and support one another.",
+    href: productUrls.fursahhouse,
+  },
   items: [
-    { id: "mnhalal" as ProductId, name: "MNHalal", description: "Discover halal restaurants, markets, caterers, food businesses, and more across Minnesota.", href: "https://www.mnhalal.com/", accent: "orange" as const, medallionTint: "orange" as const },
-    { id: "mnmuslim" as ProductId, name: "MNMuslim", description: "Discover Muslim businesses, services, organizations, events, and community resources across Minnesota.", href: "https://www.mnmuslim.com/", accent: "orange" as const, medallionTint: "purple" as const },
-    { id: "lifeinviews" as ProductId, name: "Life in Views", description: "A personal operating system for organizing your priorities, tracking what matters, and reflecting on your progress.", href: "https://lifeinviews.com", accent: "purple" as const, medallionTint: "purple" as const },
-    { id: "mnsomalis" as ProductId, name: "MN Somali", description: "Discover data, context, and sourced information about Minnesota’s Somali community.", href: "https://www.mnsomalis.com/", accent: "purple" as const, medallionTint: "purple" as const },
+    { id: "mnhalal" as ProductId, name: "MNHalal", description: "Discover halal restaurants, markets, caterers, food businesses, and more across Minnesota.", href: productUrls.mnhalal, accent: "orange" as const, medallionTint: "orange" as const },
+    { id: "mnmuslim" as ProductId, name: "MNMuslim", description: "Discover Muslim businesses, services, organizations, events, and community resources across Minnesota.", href: productUrls.mnmuslim, accent: "orange" as const, medallionTint: "purple" as const },
+    { id: "lifeinviews" as ProductId, name: "Life in Views", description: "A personal operating system for organizing your priorities, tracking what matters, and reflecting on your progress.", href: productUrls.lifeinviews, accent: "purple" as const, medallionTint: "purple" as const },
+    { id: "mnsomalis" as ProductId, name: "MN Somali", description: "Discover data, context, and sourced information about Minnesota’s Somali community.", href: productUrls.mnsomalis, accent: "purple" as const, medallionTint: "purple" as const },
   ],
 };
 
 export const about = {
-  eyebrow: "About", heading: "Hi, I'm Hamdi", lead: { before: "I love building ", accent: "useful", after: " products that solve real problems." },
-  paragraphs: ["AI has completely changed the way I build. It allows me to turn ideas into working products faster than ever while continuously learning and improving along the way.", "Through By Hamdi, I share what I'm building, what I'm learning, and what it actually takes to turn AI-built ideas into real products."],
-};
-
-export const buildingInPublic = {
-  eyebrow: "Building in public",
-  heading: { before: "Follow the ", accent: "journey", after: "." },
-  body: "Follow along as I build products, work with businesses, experiment with AI, share what I learn, and document what happens along the way.",
-  channels: [
-    { id: "youtube" as const, name: "YouTube", description: "Builder diaries, product breakdowns, and what I'm learning along the way.", actionLabel: "Subscribe", arrow: "↗", href: socials.youtube, accent: "orange" as const },
-    { id: "github" as const, name: "GitHub", description: "Open code, experiments, and works in progress.", actionLabel: "Follow", arrow: "↗", href: socials.github, accent: "purple" as const },
-    { id: "x" as const, name: "X", description: "Daily notes from what I'm building, testing, and learning.", actionLabel: "Follow", arrow: "↗", href: socials.x, accent: "orange" as const },
-  ],
+  eyebrow: "About", heading: "Hi, I'm Hamdi", lead: { before: "I build ", accent: "useful", after: " digital products, experiment with new tools, and share what I learn along the way." },
+  paragraphs: ["I'm a self-taught builder who believes you don't have to know everything before you start. I went from teaching myself to code and building websites to launching my own products, using AI and other tools to turn ideas into things people can actually use.", "Through By Hamdi, I share what I'm building and learning, while helping others use technology to solve problems and create things for themselves."],
 };

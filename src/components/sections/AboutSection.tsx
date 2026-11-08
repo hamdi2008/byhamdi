@@ -1,6 +1,5 @@
 import AccentText from "@/components/ui/AccentText";
 import Eyebrow from "@/components/ui/Eyebrow";
-import MonoTagline from "@/components/ui/MonoTagline";
 import Section from "@/components/ui/Section";
 import { about } from "@/content/home";
 
@@ -13,7 +12,7 @@ export default function AboutSection() {
           {about.heading}
           <span className="text-bh-orange">.</span>
         </h2>
-        <p className="mt-2 mb-0 max-w-[20ch] text-[clamp(22px,2.5vw,32px)] leading-[1.25] font-medium tracking-[-.02em] text-bh-ink-purple">
+        <p className="mt-2 mb-0 max-w-[26ch] text-[clamp(22px,2.5vw,32px)] leading-[1.25] font-medium tracking-[-.02em] text-bh-ink-purple">
           <AccentText {...about.lead} color="orange" />
         </p>
       </div>
@@ -23,7 +22,6 @@ export default function AboutSection() {
             {p}
           </p>
         ))}
-        <MonoTagline className="mt-1.5 border-t border-bh-hairline pt-[18px] text-xs tracking-[.14em] text-bh-muted" />
       </div>
     </Section>
   );
