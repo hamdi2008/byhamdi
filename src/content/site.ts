@@ -25,9 +25,10 @@ export const nav = {
 };
 
 export const socials = {
-  youtube: "https://www.youtube.com/@hamdimohamud08",
+  youtube: "https://www.youtube.com/@HamdiMohamudOfficial",
   github: "https://github.com/hamdi2008",
   x: "https://x.com/hamdimahmuud",
+  instagram: "https://www.instagram.com/hamdimohamud_",
   linkedin: "https://www.linkedin.com/in/hamdi-hassan-ai/",
 };
 
@@ -55,6 +56,7 @@ export const footerNav = {
   ],
   follow: [
     { label: "X / Twitter", href: socials.x },
+    { label: "Instagram", href: socials.instagram },
     { label: "GitHub", href: socials.github },
   ],
   connect: [

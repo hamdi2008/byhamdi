@@ -12,7 +12,8 @@ Profiles:
 - LinkedIn: https://www.linkedin.com/in/hamdi-hassan-ai/
 - GitHub: https://github.com/hamdi2008
 - X: https://x.com/hamdimahmuud
-- YouTube: https://www.youtube.com/@hamdimohamud08
+- YouTube: https://www.youtube.com/@HamdiMohamudOfficial
+- Instagram: https://www.instagram.com/hamdimohamud_
 
 ## Services
 
