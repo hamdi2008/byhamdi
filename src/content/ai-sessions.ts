@@ -39,7 +39,7 @@ export const sessionOptions = [
   {
     id: "four-week-ai-learning",
     name: "4-Week AI Learning",
-    price: 150,
+    price: 175,
     details: ["Four 60-minute sessions", "One session per week", "For larger projects or learning goals requiring practice over time"],
     note: "A one-time four-week package, not a recurring subscription.",
   },
