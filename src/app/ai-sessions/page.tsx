@@ -13,7 +13,7 @@ const pageUrl = aiSessions.url;
 
 export const metadata: Metadata = {
   title: aiSessions.name,
-  description: `${aiSessions.headline} Personalized, beginner-friendly one-on-one sessions: $50 for a single session or $150 for four weeks.`,
+  description: `${aiSessions.headline} Personalized, beginner-friendly one-on-one sessions: $50 for a single session or $175 for four weeks.`,
   alternates: { canonical: pageUrl },
   openGraph: {
     title: `${aiSessions.name} — By Hamdi`,
