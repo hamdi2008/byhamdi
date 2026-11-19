@@ -33,19 +33,13 @@ export const socials = {
 };
 
 export const productUrls = {
-  fursahhouse: "https://fursahhouse.com",
   mnhalal: "https://mnhalal.com",
-  mnmuslim: "https://mnmuslim.com",
   lifeinviews: "https://lifeinviews.com",
-  mnsomalis: "https://mnsomalis.com",
 };
 
 export const productLinks = [
-  { label: "Fursah House", href: productUrls.fursahhouse },
   { label: "MNHalal", href: productUrls.mnhalal },
-  { label: "MNMuslim", href: productUrls.mnmuslim },
   { label: "Life in Views", href: productUrls.lifeinviews },
-  { label: "MN Somali", href: productUrls.mnsomalis },
 ];
 
 export const footerNav = {

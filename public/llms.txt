@@ -41,25 +41,13 @@ Session options (both personalized and beginner-friendly):
 
 ## Products
 
-### Fursah House
-Where founders and opportunities meet. Discover founders, projects, and opportunities to connect, collaborate, and support one another.
-https://fursahhouse.com
-
 ### Life in Views
 A personal life-planning app for organizing priorities across Today, Week, Month, Year, and Long-Term views, with measurements and recaps.
 https://lifeinviews.com
 
-### MNMuslim
-A digital home for Muslims in Minnesota, including local services and events.
-https://www.mnmuslim.com/
-
 ### MNHalal
 A directory for finding halal restaurants, cafes, bakeries, markets, food trucks, and other halal food options in Minnesota.
 https://www.mnhalal.com/
-
-### MN Somali
-A public reference site compiling reliable information and source links about Somali Minnesotans.
-https://www.mnsomalis.com/
 
 ## Agent and API access
 
