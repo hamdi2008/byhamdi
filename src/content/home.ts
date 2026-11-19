@@ -15,22 +15,12 @@ export const services = {
   learnMore: { label: "Learn More", href: "/ai-sessions" },
 };
 
-export type ProductId = "lifeinviews" | "mnsomalis" | "mnmuslim" | "mnhalal";
+export type ProductId = "lifeinviews" | "mnhalal";
 export const productsSection = {
   heading: { before: "Products I've ", accent: "Built", after: "" },
-  featured: {
-    id: "fursahhouse",
-    name: "Fursah House",
-    logo: "/brand/fursah-house-avatar-cream.svg",
-    tagline: "Where founders and opportunities meet.",
-    description: "Discover founders, projects, and opportunities to connect, collaborate, and support one another.",
-    href: productUrls.fursahhouse,
-  },
   items: [
     { id: "mnhalal" as ProductId, name: "MNHalal", description: "Discover halal restaurants, markets, caterers, food businesses, and more across Minnesota.", href: productUrls.mnhalal, accent: "orange" as const, medallionTint: "orange" as const },
-    { id: "mnmuslim" as ProductId, name: "MNMuslim", description: "Discover Muslim businesses, services, organizations, events, and community resources across Minnesota.", href: productUrls.mnmuslim, accent: "orange" as const, medallionTint: "purple" as const },
     { id: "lifeinviews" as ProductId, name: "Life in Views", description: "A personal operating system for organizing your priorities, tracking what matters, and reflecting on your progress.", href: productUrls.lifeinviews, accent: "purple" as const, medallionTint: "purple" as const },
-    { id: "mnsomalis" as ProductId, name: "MN Somali", description: "Discover data, context, and sourced information about Minnesota’s Somali community.", href: productUrls.mnsomalis, accent: "purple" as const, medallionTint: "purple" as const },
   ],
 };
 
