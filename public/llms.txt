@@ -49,6 +49,11 @@ https://lifeinviews.com
 A directory for finding halal restaurants, cafes, bakeries, markets, food trucks, and other halal food options in Minnesota.
 https://www.mnhalal.com/
 
+## Domains for sale
+
+Hamdi is selling a few domains: https://byhamdi.com/domains
+- Community domains (mnsomali.com, mnsomalis.com, mnmuslim.com) are sold only through that page, by email offer, to buyers who will use them to serve the Minnesota Somali and Muslim community.
+
 ## Agent and API access
 
 For AI Sessions with Hamdi information, use:

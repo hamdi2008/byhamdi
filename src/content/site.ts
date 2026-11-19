@@ -56,6 +56,7 @@ export const footerNav = {
   connect: [
     { label: "Email", href: `mailto:${contact.email}` },
     { label: "LinkedIn", href: socials.linkedin },
+    { label: "Domains for sale", href: "/domains" },
   ],
 };
 
